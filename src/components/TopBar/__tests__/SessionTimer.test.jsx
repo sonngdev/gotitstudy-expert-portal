@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SessionTimer } from '../SessionTimer';
+import { SESSION_DURATION } from '../../../constants';
+import { formatCountdownTimer } from '../../../helpers';
 
 describe('<SessionTimer />', () => {
   let wrapper;
@@ -18,20 +20,19 @@ describe('<SessionTimer />', () => {
     expect(r).not.toThrow();
   });
 
-  // TODO: remove literal string here
-  it('starts off at 5 minutes', () => {
+  it('starts off at SESSION_DURATION', () => {
     const timeLeft = wrapper.find('.stat');
-    expect(timeLeft.text()).toBe('05:00');
+    expect(timeLeft.text()).toBe(formatCountdownTimer(SESSION_DURATION));
   });
 
   it.skip('counts down as time passes', () => {
     jest.advanceTimersByTime(2000);
     const time1 = wrapper.find('.stat');
-    expect(time1.text()).toBe('04:58');
+    expect(time1.text()).toBe(formatCountdownTimer(SESSION_DURATION - 2000));
 
     jest.advanceTimersByTime(7000);
     const time2 = wrapper.find('.stat');
-    expect(time2.text()).toBe('04:51');
+    expect(time2.text()).toBe(formatCountdownTimer(SESSION_DURATION - 9000));
   });
 
   // TODO: refactor reload

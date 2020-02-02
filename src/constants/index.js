@@ -8,3 +8,7 @@ export const DEFAULT_TIMEZONE = 'America/Chicago';
  *
  */
 export const CURRENT_TIME_FORMAT = 'MMM D, YYYY HH:mm:ss z';
+/**
+ * A session is 5 minutes (300,000 miliseconds) long.
+ */
+export const SESSION_DURATION = 300000;

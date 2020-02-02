@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { formatCountdownTimer } from '../../helpers';
+import { SESSION_DURATION } from '../../constants';
 
 export function SessionTimer() {
-  const [ timeLeft, setTimeLeft ] = useState(300000);
+  const [ timeLeft, setTimeLeft ] = useState(SESSION_DURATION);
   const timesUp = timeLeft < 1000;
 
   useEffect(() => {

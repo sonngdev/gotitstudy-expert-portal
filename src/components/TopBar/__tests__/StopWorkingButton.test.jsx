@@ -56,5 +56,4 @@ describe('<StopWorkingButton />', () => {
       window.location = location;
     });
   });
-
 });

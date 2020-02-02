@@ -1,0 +1,10 @@
+.TopMenu-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.u-paddingVerticalTiny {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}

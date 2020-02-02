@@ -14,7 +14,7 @@ describe('<ExpertRanking />', () => {
     expect(r).not.toThrow();
   })
   it('contains static ranking for now', () => {
-    const ranking = wrapper.find('.stat').text();
-    expect(ranking).toBe('0');
+    const ranking = wrapper.find('.stat');
+    expect(ranking.text()).toBe('0');
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CurrentTime } from './CurrentTime';
+import { CurrentTime } from '../CurrentTime';
 
 describe('<CurrentTime />', () => {
 	let wrapper;

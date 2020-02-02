@@ -9,7 +9,13 @@ export function StopWorkingButton() {
 
 	return (
 		<Fragment>
-			<Button variant="white_outline" className="stop-working" onClick={showModal}>
+			<Button
+				variant="white_outline"
+				size="small"
+				width="full"
+				className="stop-working"
+				onClick={showModal}
+			>
 				<Button.Label>Stop working</Button.Label>
 			</Button>
 

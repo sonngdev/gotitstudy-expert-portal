@@ -11,8 +11,8 @@ export function CurrentTime() {
   }, []);
 
   return (
-    <div className="current-time">
-      <Icon name="calendar" className="u-marginRightTiny" />
+    <div className="current-time u-text200 u-paddingBottomTiny">
+      <Icon name="calendar" size="extraSmall" className="u-marginRightTiny" />
       {time}
     </div>
   )

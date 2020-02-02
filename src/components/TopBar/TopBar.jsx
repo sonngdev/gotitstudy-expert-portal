@@ -15,9 +15,10 @@ export function TopBar() {
 
 			<WorkingStats />
 
+			<div>
 			<CurrentTime />
-
 			<StopWorkingButton />
+			</div>
 		</TopMenu>
 	);
 }

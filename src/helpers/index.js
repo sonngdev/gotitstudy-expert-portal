@@ -1,7 +1,8 @@
 import moment from 'moment-timezone';
+import { DEFAULT_TIMEZONE, CURRENT_TIME_FORMAT } from '../constants';
 
-export function getCstTime() {
-  return moment().tz('America/Chicago').format('MMM D, YYYY HH:mm:ss z');
+export function formatCurrentTime() {
+  return moment().tz(DEFAULT_TIMEZONE).format(CURRENT_TIME_FORMAT);
 }
 
 export function formatCountdownTimer(milisecond) {

@@ -4,6 +4,7 @@ import { ExpertRanking } from './ExpertRanking';
 import { WorkingStats } from './WorkingStats';
 import { CurrentTime } from './CurrentTime';
 import { StopWorkingButton } from './StopWorkingButton';
+import { SessionTimer } from './SessionTimer';
 import './styles/TopBar.css';
 
 export function TopBar() {
@@ -15,9 +16,11 @@ export function TopBar() {
 
 			<WorkingStats />
 
+			<SessionTimer />
+
 			<div>
-			<CurrentTime />
-			<StopWorkingButton />
+				<CurrentTime />
+				<StopWorkingButton />
 			</div>
 		</TopMenu>
 	);

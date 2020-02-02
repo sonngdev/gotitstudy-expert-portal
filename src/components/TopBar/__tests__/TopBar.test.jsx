@@ -39,4 +39,9 @@ describe('<TopBar />', () => {
     const button = wrapper.find('StopWorkingButton');
     expect(button.exists()).toBe(true);
   });
+
+  it('contains session timer', () => {
+    const timer = wrapper.find('SessionTimer');
+    expect(timer.exists()).toBe(true);
+  });
 });

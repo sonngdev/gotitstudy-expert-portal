@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from '@gotitinc/design-system';
 
 export function StopWorkingButton() {
@@ -8,7 +8,7 @@ export function StopWorkingButton() {
   const stopWorking = () => window.location.reload();
 
 	return (
-		<Fragment>
+		<>
 			<Button
 				variant="white_outline"
 				size="small"
@@ -36,6 +36,6 @@ export function StopWorkingButton() {
           </Button>
 				</Modal.Footer>
 			</Modal>
-		</Fragment>
+		</>
 	);
 }

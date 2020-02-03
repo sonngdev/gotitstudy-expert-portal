@@ -1,10 +1,8 @@
 import React from 'react';
 import { TopBar } from './TopBar';
 
-function App() {
+export function App() {
   return (
     <TopBar />
   );
 }
-
-export default App;

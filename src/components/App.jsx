@@ -8,10 +8,16 @@ export function App() {
     <Fragment>
       <TopBar />
 
-      <div className="container-app">
-        <ChatArea />
+      <div className="container-app Container u-paddingTopSmall">
+        <div className="Grid Grid--smallGutter">
+          <div className="u-size1of2">
+            <ChatArea />
+          </div>
 
-        <ExplanationArea />
+          <div className="u-size1of2">
+            <ExplanationArea />
+          </div>
+        </div>
       </div>
     </Fragment>
   );

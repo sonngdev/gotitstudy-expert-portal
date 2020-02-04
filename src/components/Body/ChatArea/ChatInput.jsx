@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { chatMessagesAdd } from '../../../redux/actions/chatMessages';
+import { chatMessagesAdd } from '../../../redux/actions';
 import { Button, Form } from '@gotitinc/design-system';
 
 export function ChatInput() {

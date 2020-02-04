@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "redux-mock-store": "^1.5.4"
+    "enzyme-adapter-react-16": "^1.15.2"
   },
   "scripts": {
     "start": "react-scripts start",

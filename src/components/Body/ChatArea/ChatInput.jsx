@@ -20,7 +20,7 @@ export function ChatInput() {
       <Form.InputGroup>
         <Form.Input placeholder="Message..."
           name="message"
-          autocomplete="off"
+          autoComplete="off"
           value={input}
           onChange={bindInput}
         />

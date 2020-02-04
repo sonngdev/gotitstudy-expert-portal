@@ -1,3 +1,9 @@
+.TopMenu {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .TopMenu-list {
   display: flex;
   align-items: center;

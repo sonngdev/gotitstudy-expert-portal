@@ -2,11 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { store } from '../../../../redux/store';
+import { chatMessagesSelector } from '../../../../redux/selectors';
 import { ChatMessages } from '../ChatMessages';
 
 describe('<ChatMessages />', () => {
   let wrapper;
-  const messages = store.getState().chatMessages;
+  const messages = chatMessagesSelector(store.getState());
 
   beforeEach(() => {
     wrapper = mount(

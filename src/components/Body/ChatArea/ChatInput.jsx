@@ -18,7 +18,12 @@ export function ChatInput() {
   return (
     <Form onSubmit={sendMessage}>
       <Form.InputGroup>
-        <Form.Input placeholder="Message..." name="message" value={input} onChange={bindInput} />
+        <Form.Input placeholder="Message..."
+          name="message"
+          autocomplete="off"
+          value={input}
+          onChange={bindInput}
+        />
         <Form.InputGroup.Append className="u-flex">
           <Button>
             <Button.Label>Send</Button.Label>

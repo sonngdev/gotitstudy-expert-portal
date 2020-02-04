@@ -1,4 +1,4 @@
-export const chatMessages = [
+export const chatMessagesInitState = [
   {
     type: 'reviser',
     avatar: 'asker',

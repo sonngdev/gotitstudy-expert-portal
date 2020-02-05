@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from '@gotitinc/design-system';
 
 export function StopWorkingButton() {
-	const [ modalVisible, setModalVisible ] = useState(false);
+	const [modalVisible, setModalVisible] = useState(false);
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
   const stopWorking = () => window.location.reload();

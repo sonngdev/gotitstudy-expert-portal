@@ -4,7 +4,7 @@ import { Button, Form } from '@gotitinc/design-system';
 import { chatMessagesAdd } from '../../../redux/actions';
 
 export function ChatInput() {
-  const [ input, setInput ] = useState('');
+  const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const bindInput = (e) => setInput(e.target.value);
   const sendMessage = (e) => {

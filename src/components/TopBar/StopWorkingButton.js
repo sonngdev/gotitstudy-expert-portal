@@ -20,7 +20,7 @@ export function StopWorkingButton() {
       </Button>
 
       <Modal show={modalVisible} size="small" onHide={hideModal}>
-        <Modal.Header closeButton={true}>
+        <Modal.Header closeButton>
           <Modal.Title>Stop working</Modal.Title>
         </Modal.Header>
 

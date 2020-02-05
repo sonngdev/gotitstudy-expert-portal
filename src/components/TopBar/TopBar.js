@@ -8,20 +8,20 @@ import { SessionTimer } from './SessionTimer';
 import './styles/TopBar.css';
 
 export function TopBar() {
-	return (
-		<TopMenu className="u-backgroundPrimary u-paddingVerticalTiny u-paddingHorizontalMedium u-textWhite">
-			<Logo name="gotit" variant="white" />
+  return (
+    <TopMenu className="u-backgroundPrimary u-paddingVerticalTiny u-paddingHorizontalMedium u-textWhite">
+      <Logo name="gotit" variant="white" />
 
-			<ExpertRanking />
+      <ExpertRanking />
 
-			<WorkingStats />
+      <WorkingStats />
 
-			<SessionTimer />
+      <SessionTimer />
 
-			<div>
-				<CurrentTime />
-				<StopWorkingButton />
-			</div>
-		</TopMenu>
-	);
+      <div>
+        <CurrentTime />
+        <StopWorkingButton />
+      </div>
+    </TopMenu>
+  );
 }

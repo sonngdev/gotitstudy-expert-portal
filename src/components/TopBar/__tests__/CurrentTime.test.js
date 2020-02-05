@@ -3,23 +3,23 @@ import { shallow } from 'enzyme';
 import { CurrentTime } from '../CurrentTime';
 
 describe('<CurrentTime />', () => {
-	let wrapper;
+  let wrapper;
 
-	beforeEach(() => {
-		wrapper = shallow(<CurrentTime />);
-	});
+  beforeEach(() => {
+    wrapper = shallow(<CurrentTime />);
+  });
 
-	it('renders', () => {
-		const r = () => shallow(<CurrentTime />);
-		expect(r).not.toThrow();
-	});
+  it('renders', () => {
+    const r = () => shallow(<CurrentTime />);
+    expect(r).not.toThrow();
+  });
 
-	it('shows current time', () => {
-		const calendarIcon = wrapper.find('Icon');
-		expect(calendarIcon.exists()).toBe(true);
-		expect(calendarIcon.prop('name')).toBe('calendar');
+  it('shows current time', () => {
+    const calendarIcon = wrapper.find('Icon');
+    expect(calendarIcon.exists()).toBe(true);
+    expect(calendarIcon.prop('name')).toBe('calendar');
 
-		const time = wrapper.text();
-		expect(time).not.toBe('Invalid date');
-	});
+    const time = wrapper.text();
+    expect(time).not.toBe('Invalid date');
+  });
 });

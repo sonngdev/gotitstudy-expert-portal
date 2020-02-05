@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { BubbleChat } from '@gotitinc/design-system';
 import { chatMessagesSelector } from '../../../redux/selectors';
@@ -7,14 +7,15 @@ import './styles/ChatMessages.css';
 
 export function ChatMessages() {
   const messages = useSelector(chatMessagesSelector);
+  const messageWindow = useRef();
   const messageBubbles = messages.map(({ type, avatar, text }) => (
     <BubbleChat type={type} avatar={avatar} text={text} key={text} />
   ));
 
-  useScrollToBottom('.chat-messages');
+  useScrollToBottom(messageWindow);
 
   return (
-    <div className="chat-messages">
+    <div className="chat-messages" ref={messageWindow}>
       {messageBubbles}
     </div>
   );

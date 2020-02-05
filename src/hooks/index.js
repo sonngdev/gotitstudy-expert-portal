@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-export function useScrollToBottom(selector) {
+export function useScrollToBottom(windowRef) {
   useEffect(() => {
-    const listWindow = document.querySelector(selector);
-    listWindow.scrollTop = listWindow.scrollHeight - listWindow.clientHeight;
+    const wndw = windowRef.current;
+    wndw.scrollTop = wndw.scrollHeight - wndw.clientHeight;
   });
 }

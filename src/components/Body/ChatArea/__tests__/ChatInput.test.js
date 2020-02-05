@@ -1,10 +1,10 @@
 import React from 'react';
+import { Form } from '@gotitinc/design-system';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { store } from '../../../../redux/store';
 import { chatMessagesAdd } from '../../../../redux/actions';
 import { ChatInput } from '../ChatInput';
-import { Form } from '@gotitinc/design-system';
 
 describe('<ChatInput />', () => {
   let wrapper;

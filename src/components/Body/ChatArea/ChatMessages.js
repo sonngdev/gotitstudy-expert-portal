@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { chatMessagesSelector } from '../../../redux/selectors';
 import { BubbleChat } from '@gotitinc/design-system';
+import { chatMessagesSelector } from '../../../redux/selectors';
 import './styles/ChatMessages.css';
 
 export function ChatMessages() {

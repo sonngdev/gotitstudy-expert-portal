@@ -13,7 +13,7 @@ describe('<ChatMessages />', () => {
     wrapper = mount(
       <Provider store={store}>
         <ChatMessages />
-      </Provider>
+      </Provider>,
     );
   });
 

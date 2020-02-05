@@ -13,7 +13,7 @@ describe('<ChatInput />', () => {
     wrapper = mount(
       <Provider store={store}>
         <ChatInput />
-      </Provider>
+      </Provider>,
     );
   });
 

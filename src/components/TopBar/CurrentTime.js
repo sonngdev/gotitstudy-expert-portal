@@ -15,5 +15,5 @@ export function CurrentTime() {
       <Icon name="calendar" size="extraSmall" className="u-marginRightTiny" />
       {time}
     </div>
-  )
+  );
 }

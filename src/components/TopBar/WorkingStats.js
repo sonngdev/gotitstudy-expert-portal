@@ -28,5 +28,5 @@ export function WorkingStats() {
         </div>
       </div>
     </div>
-  )
+  );
 }

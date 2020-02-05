@@ -13,7 +13,7 @@ export function ChatInput() {
     const action = chatMessagesAdd(msg);
     dispatch(action);
     setInput('');
-  }
+  };
 
   return (
     <Form onSubmit={sendMessage}>

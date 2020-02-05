@@ -12,7 +12,8 @@ describe('<ExpertRanking />', () => {
   it('renders', () => {
     const r = () => shallow(<ExpertRanking />);
     expect(r).not.toThrow();
-  })
+  });
+
   it('contains static ranking for now', () => {
     const ranking = wrapper.find('.stat');
     expect(ranking.text()).toBe('0');

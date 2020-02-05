@@ -6,5 +6,5 @@ export function ExpertRanking() {
       Your ranking
       <div className="stat u-text600 u-textCenter">0</div>
     </div>
-  )
+  );
 }

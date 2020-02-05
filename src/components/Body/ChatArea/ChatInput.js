@@ -24,6 +24,7 @@ export function ChatInput() {
           placeholder="Message..."
           name="message"
           autoComplete="off"
+          autoFocus
           value={input}
           onChange={bindInput}
         />

@@ -24,5 +24,7 @@
     "rules": {
         "no-undef": "off",
         "comma-dangle": [1, "always-multiline"],
+        "react/jsx-filename-extension": "off",
+        "import/prefer-default-export": "off"
     }
 }

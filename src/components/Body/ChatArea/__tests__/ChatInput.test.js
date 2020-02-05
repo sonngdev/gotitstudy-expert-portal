@@ -8,6 +8,9 @@ import { ChatInput } from '../ChatInput';
 
 describe('<ChatInput />', () => {
   let wrapper;
+  let spy;
+  let input;
+  let form;
 
   beforeEach(() => {
     wrapper = mount(
@@ -15,15 +18,20 @@ describe('<ChatInput />', () => {
         <ChatInput />
       </Provider>,
     );
+
+    spy = jest.spyOn(store, 'dispatch');
+    spy.mockImplementation(jest.fn());
+
+    input = wrapper.find(Form.Input);
+    form = wrapper.find(Form);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
   });
 
   it('dispatches add message action when user submit message', () => {
-    const spy = jest.spyOn(store, 'dispatch');
-    spy.mockImplementation(jest.fn());
-
     const message = 'Hello, how can I help?';
-    const input = wrapper.find(Form.Input);
-    const form = wrapper.find(Form);
     const payload = chatMessagesAdd({
       type: 'sender',
       avatar: 'expert',
@@ -34,7 +42,19 @@ describe('<ChatInput />', () => {
     form.simulate('submit');
 
     expect(spy).toHaveBeenCalledWith(payload);
+  });
 
-    spy.mockRestore();
+  it('ignores empty messages', () => {
+    /**
+     * For some reasons, two change simulations are necessary here. If we
+     * simulate only the second change (with value ''), or if we simulate
+     * no changes at all, the assertion below will not work as expected.
+     */
+    input.simulate('change', { target: { value: 'alo' } });
+    input.simulate('change', { target: { value: '' } });
+
+    form.simulate('submit');
+
+    expect(spy).not.toHaveBeenCalled();
   });
 });

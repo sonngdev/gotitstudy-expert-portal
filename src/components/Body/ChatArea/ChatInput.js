@@ -9,6 +9,8 @@ export function ChatInput() {
   const bindInput = (e) => setInput(e.target.value);
   const sendMessage = (e) => {
     e.preventDefault();
+    if (!input) return;
+
     const msg = { type: 'sender', avatar: 'expert', text: input };
     const action = chatMessagesAdd(msg);
     dispatch(action);

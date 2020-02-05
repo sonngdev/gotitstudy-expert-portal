@@ -6,8 +6,8 @@ import './styles/ChatMessages.css';
 
 export function ChatMessages() {
   const messages = useSelector(chatMessagesSelector);
-  const messageBubbles = messages.map(({ type, avatar, text }, i) => (
-    <BubbleChat type={type} avatar={avatar} text={text} key={i} />
+  const messageBubbles = messages.map(({ type, avatar, text }) => (
+    <BubbleChat type={type} avatar={avatar} text={text} key={text} />
   ));
 
   return (

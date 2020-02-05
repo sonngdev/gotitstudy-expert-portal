@@ -18,7 +18,8 @@ export function ChatInput() {
   return (
     <Form onSubmit={sendMessage}>
       <Form.InputGroup>
-        <Form.Input placeholder="Message..."
+        <Form.Input
+          placeholder="Message..."
           name="message"
           autoComplete="off"
           value={input}

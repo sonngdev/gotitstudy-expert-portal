@@ -18,7 +18,7 @@ export function ChatInput() {
   };
 
   return (
-    <Form onSubmit={sendMessage}>
+    <Form onSubmit={sendMessage} className="u-paddingRightSmall">
       <Form.InputGroup>
         <Form.Input
           placeholder="Message..."

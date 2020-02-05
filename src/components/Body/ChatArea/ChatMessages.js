@@ -15,7 +15,7 @@ export function ChatMessages() {
   useScrollToBottom(messageWindow);
 
   return (
-    <div className="chat-messages" ref={messageWindow}>
+    <div className="chat-messages u-paddingRightSmall" ref={messageWindow}>
       {messageBubbles}
     </div>
   );

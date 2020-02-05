@@ -45,14 +45,15 @@ describe('<StopWorkingButton />', () => {
     });
 
     it('reloads the page when Confirm button is clicked', () => {
-      const spy = jest.spyOn(window.location, 'reload');
-      spy.mockImplementation(jest.fn());
+      const { location } = window;
+      delete window.location;
+      window.location = { reload: jest.fn() };
 
       const confirm = modal.find('.confirm');
       confirm.simulate('click');
       expect(window.location.reload).toHaveBeenCalled();
 
-      spy.mockRestore();
+      window.location = location;
     });
   });
 });

@@ -37,12 +37,13 @@ describe('<SessionTimer />', () => {
 
   // TODO: refactor reload
   it.skip('reloads the page when time is up', () => {
-    const spy = jest.spyOn(window.location, 'reload');
-    spy.mockImplementation(jest.fn());
+    const { location } = window;
+    delete window.location;
+    window.location = { reload: jest.fn() };
 
     jest.advanceTimersByTime(300000);
     expect(window.location.reload).toHaveBeenCalled();
 
-    spy.mockRestore();
+    window.location = location;
   });
 });

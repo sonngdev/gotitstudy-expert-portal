@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ChatArea } from '../ChatArea';
+import { ChatArea } from '../index';
 
 describe('<ChatArea />', () => {
   let wrapper;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTinyMceEditor } from '../../../hooks';
 
 /**
@@ -18,3 +19,8 @@ export function TinyEditor({ id, onChange }) {
     <textarea id={id} value={input} onChange={(e) => bindAndCall(e.target.value)} />
   );
 }
+
+TinyEditor.propTypes = {
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

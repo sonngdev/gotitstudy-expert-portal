@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TopBar } from '../TopBar';
+import { TopBar } from '../index';
 
 describe('<TopBar />', () => {
   let wrapper;

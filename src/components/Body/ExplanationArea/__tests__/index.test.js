@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ExplanationArea } from '../ExplanationArea';
+import { ExplanationArea } from '../index';
 
 describe('<ExplanationArea />', () => {
   let wrapper;

@@ -23,8 +23,10 @@
     ],
     "rules": {
         "no-undef": "off",
-        "comma-dangle": [1, "always-multiline"],
+        "no-unused-vars": "warn",
+        "comma-dangle": ["warn", "always-multiline"],
         "react/jsx-filename-extension": "off",
+        "react/prop-types": "warn",
         "import/prefer-default-export": "off"
     }
 }

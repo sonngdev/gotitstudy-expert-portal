@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { BubbleChat } from '@gotitinc/design-system';
 import { chatMessagesSelector } from '../../../redux/selectors';
-import { useScrollToBottom } from '../../../hooks';
+import { useScrollToBottom } from '../../../utils';
 import './styles/ChatMessages.css';
 
 export function ChatMessages() {

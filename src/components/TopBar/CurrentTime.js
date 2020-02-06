@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@gotitinc/design-system';
-import { formatCurrentTime } from '../../helpers';
+import { formatCurrentTime } from '../../utils';
 
 export function CurrentTime() {
   const [time, setTime] = useState(formatCurrentTime());

@@ -5,13 +5,6 @@ import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
 import 'tinymce/plugins/tiny_mce_wiris';
 
-export function useScrollToBottom(windowRef) {
-  useEffect(() => {
-    const wndw = windowRef.current;
-    wndw.scrollTop = wndw.scrollHeight - wndw.clientHeight;
-  });
-}
-
 export function useTinyMceEditor(id, onChange) {
   const [editor, setEditor] = useState(null);
 

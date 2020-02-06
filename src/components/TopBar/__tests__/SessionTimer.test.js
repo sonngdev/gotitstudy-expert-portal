@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { SessionTimer } from '../SessionTimer';
 import { SESSION_DURATION } from '../../../constants';
-import { formatCountdownTimer } from '../../../helpers';
+import { formatCountdownTimer } from '../../../utils';
 
 describe('<SessionTimer />', () => {
   let wrapper;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { formatCountdownTimer } from '../../helpers';
+import { formatCountdownTimer } from '../../utils';
 import { SESSION_DURATION } from '../../constants';
 
 export function SessionTimer() {

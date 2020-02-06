@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useTinyMceEditor } from '../../../hooks';
+import { useTinyMceEditor } from '../../../utils';
 
 /**
  * Custom tinymce React component:

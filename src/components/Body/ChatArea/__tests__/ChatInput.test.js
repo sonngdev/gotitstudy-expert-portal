@@ -50,7 +50,7 @@ describe('<ChatInput />', () => {
      * simulate only the second change (with value ''), or if we simulate
      * no changes at all, the assertion below will not work as expected.
      */
-    input.simulate('change', { target: { value: 'alo' } });
+    input.simulate('change', { target: { value: 'Ok, what\'s the problem?' } });
     input.simulate('change', { target: { value: '' } });
 
     form.simulate('submit');

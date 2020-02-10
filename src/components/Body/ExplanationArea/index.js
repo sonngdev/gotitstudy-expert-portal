@@ -8,7 +8,7 @@ export function ExplanationArea() {
       <p className="u-opacityHalf">Complete all 3 sections before submitting your explanation</p>
 
       <h5>Theory or Concept</h5>
-      <TinyEditor id="tinymce" onChange={console.log} />
+      <TinyEditor id="tinymce" />
     </div>
   );
 }

@@ -22,5 +22,9 @@ export function TinyEditor({ id, onChange }) {
 
 TinyEditor.propTypes = {
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+};
+
+TinyEditor.defaultProps = {
+  onChange: () => {},
 };

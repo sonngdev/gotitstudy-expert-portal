@@ -3,7 +3,7 @@ import tinymce from 'tinymce';
 import 'tinymce/themes/silver';
 import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
-import 'tinymce/plugins/tiny_mce_wiris';
+import './tiny_mce_wiris';
 
 export function useTinyMceEditor(id, onChange) {
   const [editor, setEditor] = useState(null);

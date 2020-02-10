@@ -4,6 +4,7 @@ import 'tinymce/themes/silver';
 import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
 import './tiny_mce_wiris';
+import './latex';
 
 export function useTinyMceEditor(id, onChange) {
   const [editor, setEditor] = useState(null);
@@ -20,8 +21,8 @@ export function useTinyMceEditor(id, onChange) {
       skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
       menubar: false,
       branding: false,
-      plugins: 'link lists tiny_mce_wiris',
-      toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor',
+      plugins: 'link lists tiny_mce_wiris latex',
+      toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor latex',
       setup: (ed) => {
         setEditor(ed);
         ed.on('keyup change', () => onChange(ed.getContent()));

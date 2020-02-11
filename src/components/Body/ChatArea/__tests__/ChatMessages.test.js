@@ -32,7 +32,7 @@ describe('<ChatMessages />', () => {
     wrapper = shallow(<ChatMessages />);
   });
 
-  it('get messages from custom hook', () => {
+  it('gets messages from custom hook', () => {
     expect(useChatMessagesList).toHaveBeenCalled();
   });
 

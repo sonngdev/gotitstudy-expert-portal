@@ -9,9 +9,11 @@ export function ChatInput() {
   const bindInput = (e) => setInput(e.target.value);
   const sendMessage = (e) => {
     e.preventDefault();
-    if (!input) return;
 
-    const msg = { type: 'sender', avatar: 'expert', text: input };
+    const trimmedInput = input.trim();
+    if (!trimmedInput) return;
+
+    const msg = { type: 'sender', avatar: 'expert', text: trimmedInput };
     const action = chatMessagesAdd(msg);
     dispatch(action);
     setInput('');

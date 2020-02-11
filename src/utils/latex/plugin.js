@@ -1,10 +1,13 @@
 /* eslint-disable */
 
 tinymce.PluginManager.add('latex', function (editor, url) {
+  const latexClass = 'Latexformula';
+  const isLatexFormula = (node) => [...node.classList].includes(latexClass);
+
   const openDialog = () => {
     const { selection } = editor;
     const node = selection && selection.getNode();
-    const selectedExpression = node && node.alt ? node.alt : '';
+    const selectedExpression = node && isLatexFormula(node) ? node.alt : '';
 
     editor.windowManager.open({
       title: 'LaTeX expression',
@@ -28,7 +31,7 @@ tinymce.PluginManager.add('latex', function (editor, url) {
          * https://math.now.sh/home
          */
         const src = `https://math.now.sh?from=${encodeURIComponent(expression)}`;
-        const content = `<img class="latex" src="${src}" alt="${expression}" />`;
+        const content = `<img class="${latexClass}" src="${src}" alt="${expression}" role="math"/>`;
         editor.insertContent(content);
         close();
       },
@@ -45,9 +48,8 @@ tinymce.PluginManager.add('latex', function (editor, url) {
     onAction: openDialog,
   });
 
-  editor.on('DblClick', function(e) {
-    const { nodeName, alt } = e.target;
-    if (nodeName == 'IMG' && alt) openDialog();
+  editor.on('DblClick', ({ target }) => {
+    if (isLatexFormula(target)) openDialog();
   });
 
   return {

@@ -10,8 +10,7 @@ describe('<WorkingStats />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<WorkingStats />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('has static avg bid price for now', () => {

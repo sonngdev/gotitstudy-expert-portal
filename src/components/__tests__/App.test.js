@@ -12,8 +12,7 @@ describe('<App />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<App />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('contains a TopBar', () => {

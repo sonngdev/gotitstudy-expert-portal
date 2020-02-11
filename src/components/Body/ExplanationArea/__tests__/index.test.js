@@ -9,6 +9,10 @@ describe('<ExplanationArea />', () => {
     wrapper = shallow(<ExplanationArea />);
   });
 
+  it('renders', () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
+
   it('contains a title and a subtitle', () => {
     expect(wrapper.text()).toContain('Problem explanation');
     expect(wrapper.text()).toContain('Complete all 3 sections before submitting your explanation');

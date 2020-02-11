@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopBar /> renders 1`] = `
+"<TopMenu className=\\"u-backgroundPrimary u-paddingVerticalTiny u-paddingHorizontalMedium u-textWhite\\">
+  <Logo name=\\"gotit\\" variant=\\"white\\" fileType=\\"svg\\" />
+  <ExpertRanking />
+  <WorkingStats />
+  <SessionTimer />
+  <div>
+    <CurrentTime />
+    <StopWorkingButton />
+  </div>
+</TopMenu>"
+`;

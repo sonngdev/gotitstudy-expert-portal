@@ -10,8 +10,7 @@ describe('<ChatArea />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<ChatArea />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('contains chat messages', () => {

@@ -10,8 +10,7 @@ describe('<TopBar />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<TopBar />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('contains Got It\'s logo', () => {

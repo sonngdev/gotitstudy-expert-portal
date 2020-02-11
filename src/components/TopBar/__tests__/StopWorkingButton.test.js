@@ -12,8 +12,7 @@ describe('<StopWorkingButton />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<StopWorkingButton />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('contains a button', () => {

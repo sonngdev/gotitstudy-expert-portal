@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatArea /> renders 1`] = `
+"<div>
+  <ChatMessages />
+  <ChatInput />
+</div>"
+`;

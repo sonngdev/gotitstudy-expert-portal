@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders 1`] = `
+"<Fragment>
+  <TopBar />
+  <div className=\\"container-app Container u-paddingTopSmall\\">
+    <div className=\\"Grid Grid--smallGutter\\">
+      <div className=\\"u-size1of2\\">
+        <ChatArea />
+      </div>
+      <div className=\\"u-size1of2\\">
+        <ExplanationArea />
+      </div>
+    </div>
+  </div>
+</Fragment>"
+`;

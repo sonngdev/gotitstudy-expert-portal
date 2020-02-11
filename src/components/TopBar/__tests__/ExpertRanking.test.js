@@ -10,8 +10,7 @@ describe('<ExpertRanking />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<ExpertRanking />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('contains static ranking for now', () => {

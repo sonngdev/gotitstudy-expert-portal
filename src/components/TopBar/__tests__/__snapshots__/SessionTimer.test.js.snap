@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SessionTimer /> renders 1`] = `
+"<div className=\\"session-timer u-backgroundPositive u-roundedLarge u-paddingTiny u-paddingHorizontalExtraSmall u-text100 u-textUppercase u-textWhite\\">
+  Discussion session active
+  <div className=\\"stat u-text600 u-textCenter\\">
+    05:00
+  </div>
+</div>"
+`;

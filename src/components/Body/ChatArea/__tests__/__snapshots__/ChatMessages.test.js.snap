@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatMessages /> renders 1`] = `
+"<div className=\\"chat-messages u-paddingRightSmall\\">
+  <BubbleChat type=\\"reviser\\" avatar=\\"asker\\" text=\\"How do you do this?\\" />
+  <BubbleChat type=\\"system\\" avatar=\\"gotit\\" text=\\"This is a system message from Got It!.\\" />
+  <BubbleChat type=\\"sender\\" avatar=\\"expert\\" text=\\"Let me take a look.\\" />
+</div>"
+`;

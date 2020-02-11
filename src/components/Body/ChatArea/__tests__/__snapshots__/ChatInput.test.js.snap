@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatInput /> renders 1`] = `
+"<ForwardRef onSubmit={[Function: sendMessage]} className=\\"u-paddingRightSmall\\">
+  <Form.InputGroup>
+    <Form.Input placeholder=\\"Message...\\" name=\\"message\\" autoComplete=\\"off\\" autoFocus={true} value=\\"\\" onChange={[Function: bindInput]} />
+    <FormInputGroupAppend uFlex className=\\"u-flex\\">
+      <Button nonUppercase={false} variant=\\"primary\\">
+        <ButtonLabel uInlineBlock>
+          Send
+        </ButtonLabel uInlineBlock>
+      </Button>
+    </FormInputGroupAppend uFlex>
+  </Form.InputGroup>
+</ForwardRef>"
+`;

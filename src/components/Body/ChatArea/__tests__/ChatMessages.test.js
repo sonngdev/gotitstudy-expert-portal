@@ -37,6 +37,10 @@ describe('<ChatMessages />', () => {
     wrapper = shallow(<ChatMessages />);
   });
 
+  it('renders', () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
+
   it('gets messages from custom hook', () => {
     expect(useChatMessagesList).toHaveBeenCalled();
   });

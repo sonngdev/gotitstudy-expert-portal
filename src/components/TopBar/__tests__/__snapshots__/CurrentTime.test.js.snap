@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CurrentTime /> renders 1`] = `
+"<div className=\\"current-time u-text200 u-paddingBottomTiny\\">
+  <Icon name=\\"calendar\\" size=\\"extraSmall\\" className=\\"u-marginRightTiny\\" />
+  Feb 11, 2020 11:32:29 CST
+</div>"
+`;

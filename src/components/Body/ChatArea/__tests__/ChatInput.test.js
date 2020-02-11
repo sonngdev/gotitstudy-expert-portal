@@ -29,6 +29,10 @@ describe('<ChatInput />', () => {
     mockAddMessage.mockClear();
   });
 
+  it('renders', () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
+
   it('gets message adder from custom hook', () => {
     expect(useChatMessagesAdd).toHaveBeenCalled();
   });

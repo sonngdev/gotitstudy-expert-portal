@@ -16,8 +16,7 @@ describe('<SessionTimer />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<SessionTimer />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('starts off at SESSION_DURATION', () => {

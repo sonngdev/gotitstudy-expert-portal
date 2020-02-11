@@ -10,8 +10,7 @@ describe('<CurrentTime />', () => {
   });
 
   it('renders', () => {
-    const r = () => shallow(<CurrentTime />);
-    expect(r).not.toThrow();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it('shows current time', () => {

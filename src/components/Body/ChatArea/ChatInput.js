@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Button, Form } from '@gotitinc/design-system';
-import { chatMessagesAdd } from '../../../redux/actions';
+import { useChatMessagesAdd } from '../../../utils';
 
 export function ChatInput() {
   const [input, setInput] = useState('');
-  const dispatch = useDispatch();
+  const addMessage = useChatMessagesAdd();
+
   const bindInput = (e) => setInput(e.target.value);
   const sendMessage = (e) => {
     e.preventDefault();
-
     const trimmedInput = input.trim();
+
     if (!trimmedInput) return;
 
-    const msg = { type: 'sender', avatar: 'expert', text: trimmedInput };
-    const action = chatMessagesAdd(msg);
-    dispatch(action);
+    const message = { type: 'sender', avatar: 'expert', text: trimmedInput };
+    addMessage(message);
     setInput('');
   };
 

@@ -1,60 +1,77 @@
 import React from 'react';
 import { Form } from '@gotitinc/design-system';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { store } from '../../../../redux/store';
-import { chatMessagesAdd } from '../../../../redux/actions';
+import { shallow } from 'enzyme';
+import { useChatMessagesAdd } from '../../../../utils';
 import { ChatInput } from '../ChatInput';
+
+/**
+ * Prefix variable with `mock` so it gets hoisted along with `jest.mock`
+ */
+const mockAddMessage = jest.fn();
+
+jest.mock('../../../../utils', () => ({
+  __esModule: true,
+  useChatMessagesAdd: jest.fn(() => mockAddMessage),
+}));
 
 describe('<ChatInput />', () => {
   let wrapper;
-  let spy;
-  let input;
-  let form;
+
+  const changeInput = (value) => {
+    wrapper.find(Form.Input).simulate('change', { target: { value } });
+  };
+  const submitForm = () => {
+    wrapper.find(Form).simulate('submit', { preventDefault: () => {} });
+  };
 
   beforeEach(() => {
-    wrapper = mount(
-      <Provider store={store}>
-        <ChatInput />
-      </Provider>,
-    );
-
-    spy = jest.spyOn(store, 'dispatch');
-    spy.mockImplementation(jest.fn());
-
-    input = wrapper.find(Form.Input);
-    form = wrapper.find(Form);
+    wrapper = shallow(<ChatInput />);
+    mockAddMessage.mockClear();
   });
 
-  afterEach(() => {
-    spy.mockRestore();
+  it('gets message adder from custom hook', () => {
+    expect(useChatMessagesAdd).toHaveBeenCalled();
   });
 
-  it('dispatches add message action when user submit message', () => {
+  it('binds input', () => {
+    const message = 'Ok, what\'s the problem?';
+    changeInput(message);
+    expect(wrapper.find(Form.Input).prop('value')).toBe(message);
+  });
+
+  it('calls message adder when user submits a non-empty message', () => {
     const message = 'Hello, how can I help?';
-    const payload = chatMessagesAdd({
-      type: 'sender',
-      avatar: 'expert',
-      text: message,
-    });
+    changeInput(message);
+    submitForm();
 
-    input.simulate('change', { target: { value: message } });
-    form.simulate('submit');
-
-    expect(spy).toHaveBeenCalledWith(payload);
+    const messageObj = { type: 'sender', avatar: 'expert', text: message };
+    expect(mockAddMessage).toHaveBeenCalledWith(messageObj);
   });
 
   it('ignores empty messages', () => {
-    /**
-     * For some reasons, two change simulations are necessary here. If we
-     * simulate only the second change (with value ''), or if we simulate
-     * no changes at all, the assertion below will not work as expected.
-     */
-    input.simulate('change', { target: { value: 'Ok, what\'s the problem?' } });
-    input.simulate('change', { target: { value: '' } });
+    submitForm();
+    expect(mockAddMessage).not.toHaveBeenCalled();
+  });
 
-    form.simulate('submit');
+  it('trims whitespace in input', () => {
+    changeInput('     Hello, how can I help? \t  \n');
+    submitForm();
 
-    expect(spy).not.toHaveBeenCalled();
+    const messageObj = { type: 'sender', avatar: 'expert', text: 'Hello, how can I help?' };
+    expect(mockAddMessage).toHaveBeenCalledWith(messageObj);
+  });
+
+  it('ignores messages with only whitespace', () => {
+    changeInput('     \t\n');
+    submitForm();
+
+    expect(mockAddMessage).not.toHaveBeenCalled();
+  });
+
+  it('resets input after each submission', () => {
+    changeInput('Ok, what\'s the problem?');
+    submitForm();
+
+    expect(wrapper.find(Form.Input).prop('value')).toBe('');
   });
 });

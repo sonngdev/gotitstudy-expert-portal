@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { useChatMessages, useScrollToBottom } from '../../../../utils';
+import { useChatMessagesList, useScrollToBottom } from '../../../../utils';
 import { ChatMessages } from '../ChatMessages';
 
 jest.mock('../../../../utils', () => ({
   __esModule: true,
-  useChatMessages: jest.fn(() => [
+  useChatMessagesList: jest.fn(() => [
     {
       type: 'reviser',
       avatar: 'asker',
@@ -33,7 +33,7 @@ describe('<ChatMessages />', () => {
   });
 
   it('get messages from custom hook', () => {
-    expect(useChatMessages).toHaveBeenCalled();
+    expect(useChatMessagesList).toHaveBeenCalled();
   });
 
   it('scrolls to bottom after every render', () => {

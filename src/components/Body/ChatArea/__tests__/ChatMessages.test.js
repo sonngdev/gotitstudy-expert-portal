@@ -1,32 +1,49 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { store } from '../../../../redux/store';
-import { chatMessagesSelector } from '../../../../redux/selectors';
+import { shallow } from 'enzyme';
+import { useChatMessages, useScrollToBottom } from '../../../../utils';
 import { ChatMessages } from '../ChatMessages';
+
+jest.mock('../../../../utils', () => ({
+  __esModule: true,
+  useChatMessages: jest.fn(() => [
+    {
+      type: 'reviser',
+      avatar: 'asker',
+      text: 'How do you do this?',
+    },
+    {
+      type: 'system',
+      avatar: 'gotit',
+      text: 'This is a system message from Got It!.',
+    },
+    {
+      type: 'sender',
+      avatar: 'expert',
+      text: 'Let me take a look.',
+    },
+  ]),
+  useScrollToBottom: jest.fn(),
+}));
 
 describe('<ChatMessages />', () => {
   let wrapper;
-  const messages = chatMessagesSelector(store.getState());
 
   beforeEach(() => {
-    wrapper = mount(
-      <Provider store={store}>
-        <ChatMessages />
-      </Provider>,
-    );
+    wrapper = shallow(<ChatMessages />);
   });
 
-  it('renders all messages in the conversation', () => {
+  it('get messages from custom hook', () => {
+    expect(useChatMessages).toHaveBeenCalled();
+  });
+
+  it('scrolls to bottom after every render', () => {
+    expect(useScrollToBottom).toHaveBeenCalled();
+  });
+
+  it('renders all messages in the conversation in order', () => {
     const chats = wrapper.find('BubbleChat');
-    expect(chats.length).toBe(messages.length);
-  });
-
-  it('contains initial messages from asker and system', () => {
-    const askerMsg = messages.find((msg) => msg.type === 'reviser');
-    const systemMsg = messages.find((msg) => msg.type === 'system');
-
-    expect(wrapper.text()).toContain(askerMsg.text);
-    expect(wrapper.text()).toContain(systemMsg.text);
+    expect(chats.length).toBe(3);
+    expect(chats.at(0).prop('type')).toBe('reviser');
+    expect(chats.at(2).prop('type')).toBe('sender');
   });
 });

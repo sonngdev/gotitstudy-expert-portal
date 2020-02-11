@@ -1,12 +1,12 @@
 import moment from 'moment-timezone';
-import { DEFAULT_TIMEZONE, CURRENT_TIME_FORMAT } from '../constants';
+import { DEFAULT_TIMEZONE, LONG_TIME_FORMAT } from '../constants';
 
 export function getCurrentTime() {
   return moment().tz(DEFAULT_TIMEZONE);
 }
 
-export function formatCurrentTime(momentObj) {
-  return momentObj.format(CURRENT_TIME_FORMAT);
+export function formatLongTime(momentObj) {
+  return momentObj.format(LONG_TIME_FORMAT);
 }
 
 export function formatCountdownTimer(milisecond) {

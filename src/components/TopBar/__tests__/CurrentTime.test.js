@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment-timezone';
 import { shallow } from 'enzyme';
 import { getCurrentTime } from '../../../utils';
-import { DEFAULT_TIMEZONE } from '../../../constants'
+import { DEFAULT_TIMEZONE } from '../../../constants';
 import { CurrentTime } from '../CurrentTime';
 
 jest.mock('../../../utils', () => ({
@@ -28,7 +28,7 @@ describe('<CurrentTime />', () => {
       .mockReturnValueOnce(moment(1581473066000).tz(DEFAULT_TIMEZONE))
       .mockReturnValueOnce(moment(1581473067000).tz(DEFAULT_TIMEZONE));
     wrapper = shallow(<CurrentTime />);
-    });
+  });
 
   it('renders', () => {
     expect(wrapper.debug()).toMatchSnapshot();

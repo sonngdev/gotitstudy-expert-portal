@@ -10,8 +10,14 @@ export function formatLongTime(momentObj) {
 }
 
 export function formatCountdownTimer(milisecond) {
-  const minute = Math.floor(milisecond / 1000 / 60);
-  const second = Math.floor(milisecond / 1000) - 60 * minute;
+  const absMilisecond = Math.abs(milisecond);
 
-  return [minute, second].map((n) => String(n).padStart(2, '0')).join(':');
+  const minute = Math.floor(absMilisecond / 1000 / 60);
+  const second = Math.floor(absMilisecond / 1000) - 60 * minute;
+
+  const sign = milisecond < 0 ? '-' : '';
+  const min = String(minute);
+  const sec = String(second).padStart(2, '0');
+
+  return `${sign}${min}:${sec}`;
 }

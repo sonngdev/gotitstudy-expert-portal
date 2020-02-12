@@ -44,4 +44,13 @@ describe('<SessionTimer />', () => {
 
     window.location = location;
   });
+
+  it('has green background at the beginning', () => {
+    expect(wrapper.hasClass('u-backgroundPositive')).toBe(true);
+  });
+
+  it.skip('has red background at the end', () => {
+    jest.advanceTimersByTime(SESSION_DURATION);
+    expect(wrapper.hasClass('u-backgroundNegative')).toBe(true);
+  });
 });

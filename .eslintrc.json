@@ -24,6 +24,7 @@
     "rules": {
         "comma-dangle": ["warn", "always-multiline"],
         "indent": "warn",
+        "no-multi-spaces": "warn",
         "no-undef": "off",
         "no-unused-vars": "warn",
         "semi": "warn",

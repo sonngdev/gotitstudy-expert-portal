@@ -19,28 +19,27 @@ describe('<SessionTimer />', () => {
     expect(wrapper.debug()).toMatchSnapshot();
   });
 
-  it('starts off at SESSION_DURATION', () => {
-    const timeLeft = wrapper.find('.stat');
-    expect(timeLeft.text()).toBe(formatCountdownTimer(SESSION_DURATION));
+  it('starts off at the default session duration', () => {
+    expect(wrapper.find('.stat').text())
+      .toBe(formatCountdownTimer(SESSION_DURATION));
   });
 
   it.skip('counts down as time passes', () => {
     jest.advanceTimersByTime(2000);
-    const time1 = wrapper.find('.stat');
-    expect(time1.text()).toBe(formatCountdownTimer(SESSION_DURATION - 2000));
+    expect(wrapper.find('.stat').text())
+      .toBe(formatCountdownTimer(SESSION_DURATION - 2000));
 
     jest.advanceTimersByTime(7000);
-    const time2 = wrapper.find('.stat');
-    expect(time2.text()).toBe(formatCountdownTimer(SESSION_DURATION - 9000));
+    expect(wrapper.find('.stat').text())
+      .toBe(formatCountdownTimer(SESSION_DURATION - 9000));
   });
 
-  // TODO: refactor reload
   it.skip('reloads the page when time is up', () => {
     const { location } = window;
     delete window.location;
     window.location = { reload: jest.fn() };
 
-    jest.advanceTimersByTime(300000);
+    jest.advanceTimersByTime(SESSION_DURATION + 1000);
     expect(window.location.reload).toHaveBeenCalled();
 
     window.location = location;

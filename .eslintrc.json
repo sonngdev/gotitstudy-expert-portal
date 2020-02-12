@@ -22,9 +22,10 @@
         "react"
     ],
     "rules": {
+        "comma-dangle": ["warn", "always-multiline"],
+        "indent": "warn",
         "no-undef": "off",
         "no-unused-vars": "warn",
-        "comma-dangle": ["warn", "always-multiline"],
         "semi": "warn",
         "import/prefer-default-export": "off",
         "import/no-duplicates": "warn",

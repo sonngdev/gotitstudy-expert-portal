@@ -26,21 +26,17 @@ describe('<StopWorkingButton />', () => {
   });
 
   describe('<Modal />', () => {
-    let modal;
-
     beforeEach(() => {
-      modal = wrapper.find('Modal');
       button.simulate('click');
     });
 
-    it.skip('shows up when button is clicked', () => {
-      expect(modal.prop('show')).toBe(true);
+    it('shows up when button is clicked', () => {
+      expect(wrapper.find('Modal').prop('show')).toBe(true);
     });
 
     it('hides when Cancel button is clicked', () => {
-      const cancel = modal.find('.cancel');
-      cancel.simulate('click');
-      expect(modal.prop('show')).toBe(false);
+      wrapper.find('Modal').find('.cancel').simulate('click');
+      expect(wrapper.find('Modal').prop('show')).toBe(false);
     });
 
     it('reloads the page when Confirm button is clicked', () => {
@@ -48,7 +44,7 @@ describe('<StopWorkingButton />', () => {
       delete window.location;
       window.location = { reload: jest.fn() };
 
-      const confirm = modal.find('.confirm');
+      const confirm = wrapper.find('Modal').find('.confirm');
       confirm.simulate('click');
       expect(window.location.reload).toHaveBeenCalled();
 

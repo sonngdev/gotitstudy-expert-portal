@@ -1,43 +1,91 @@
-/* eslint-disable */
+/* eslint-disable prefer-arrow-callback */
 
-tinymce.PluginManager.add('latex', function (editor, url) {
+tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
+  /**
+  |--------------------------------------------------
+  | VARIABLES
+  |--------------------------------------------------
+  */
   const latexClass = 'Latexformula';
-  const isLatexFormula = (node) => [...node.classList].includes(latexClass);
+  const latexPreviewId = `${latexClass}-preview`;
 
-  const openDialog = () => {
+
+  /**
+  |--------------------------------------------------
+  | HELPERS
+  |--------------------------------------------------
+  */
+  const isLatexFormula = (node) => [...node.classList].includes(latexClass);
+  const getExpression = (dialog) => dialog.getData().expression.trim();
+  const getSelectedExpression = () => {
     const { selection } = editor;
     const node = selection && selection.getNode();
-    const selectedExpression = node && isLatexFormula(node) ? node.alt : '';
+    return node && isLatexFormula(node) ? node.alt : '';
+  };
+  /**
+   * LaTeX Math as SVG image:
+   * https://math.now.sh/home
+   */
+  const getFormulaSrc = (expression) => (
+    `https://math.now.sh?from=${encodeURIComponent(expression)}`
+  );
+  const setPreview = (content) => {
+    document.querySelector(`#${latexPreviewId}`).innerHTML = content;
+  };
 
-    editor.windowManager.open({
-      title: 'LaTeX expression',
-      body: {
-        type: 'panel',
-        items: [
-          { type: 'input', name: 'expression', label: 'Expression' },
-        ],
-      },
-      buttons: [
-        { type: 'cancel', text: 'Close' },
-        { type: 'submit', text: 'Save', primary: true },
+
+  /**
+  |--------------------------------------------------
+  | DIALOG
+  |--------------------------------------------------
+  */
+  const latexDialog = {
+    title: 'LaTeX expression',
+    body: {
+      type: 'panel',
+      items: [
+        { type: 'textarea', name: 'expression', label: 'Expression' },
+        { type: 'button', name: 'preview', text: 'Preview' },
+        { type: 'htmlpanel', html: `<div id="${latexPreviewId}"></div>` },
       ],
-      initialData: {
-        expression: selectedExpression,
-      },
-      onSubmit({ getData, close }) {
-        const { expression } = getData();
-        /**
-         * LaTeX Math as SVG image
-         * https://math.now.sh/home
-         */
-        const src = `https://math.now.sh?from=${encodeURIComponent(expression)}`;
-        const content = `<img class="${latexClass}" src="${src}" alt="${expression}" role="math"/>`;
-        editor.insertContent(content);
-        close();
-      },
-    });
-  }
+    },
+    buttons: [
+      { type: 'cancel', text: 'Cancel' },
+      { type: 'submit', text: 'Insert', primary: true },
+    ],
+    initialData: {
+      expression: getSelectedExpression(),
+    },
+    onAction(dialog, details) {
+      if (details.name !== 'preview') return;
 
+      const expression = getExpression(dialog);
+      if (!expression) return;
+
+      const src = getFormulaSrc(expression);
+      const content = `<img src="${src}" alt="${expression}" role="math" />`;
+      setPreview(content);
+    },
+    onSubmit(dialog) {
+      const expression = getExpression(dialog);
+      if (!expression) return;
+
+      const src = getFormulaSrc(expression);
+      const content = `<img class="${latexClass}" src="${src}" alt="${expression}" role="math"/>`;
+      editor.insertContent(content);
+
+      dialog.close();
+    },
+  };
+
+  const openDialog = () => editor.windowManager.open(latexDialog);
+
+
+  /**
+  |--------------------------------------------------
+  | REGISTER
+  |--------------------------------------------------
+  */
   editor.ui.registry.addButton('latex', {
     text: 'LaTeX',
     onAction: openDialog,
@@ -55,4 +103,4 @@ tinymce.PluginManager.add('latex', function (editor, url) {
   return {
     getMetadata: () => ({ name: 'LaTeX plugin for tinymce 5' }),
   };
-})
+});

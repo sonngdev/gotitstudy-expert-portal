@@ -44,7 +44,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   | DIALOG
   |--------------------------------------------------
   */
-  const latexDialog = {
+  const openDialog = () => editor.windowManager.open({
     title: 'LaTeX expression',
     body: {
       type: 'panel',
@@ -81,9 +81,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
 
       dialog.close();
     },
-  };
-
-  const openDialog = () => editor.windowManager.open(latexDialog);
+  });
 
 
   /**

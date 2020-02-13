@@ -27,6 +27,7 @@
         "no-multi-spaces": "warn",
         "no-undef": "off",
         "no-unused-vars": "warn",
+        "prefer-arrow-callback": "warn",
         "semi": "warn",
         "import/prefer-default-export": "off",
         "import/no-duplicates": "warn",

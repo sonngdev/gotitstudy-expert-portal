@@ -7,6 +7,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   |--------------------------------------------------
   */
   const latexClass = 'Latexformula';
+
   const latexPreviewId = `${latexClass}-preview`;
 
 
@@ -16,19 +17,23 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   |--------------------------------------------------
   */
   const isLatexFormula = (node) => [...node.classList].includes(latexClass);
+
   const getExpression = (dialog) => dialog.getData().expression.trim();
+
   const getSelectedExpression = () => {
     const { selection } = editor;
     const node = selection && selection.getNode();
     return node && isLatexFormula(node) ? node.alt : '';
   };
-  /**
-   * LaTeX Math as SVG image:
-   * https://math.now.sh/home
-   */
+
   const getFormulaSrc = (expression) => (
+    /**
+     * LaTeX Math as SVG image:
+     * https://math.now.sh/home
+     */
     `https://math.now.sh?from=${encodeURIComponent(expression)}`
   );
+
   const setPreview = (content) => {
     document.querySelector(`#${latexPreviewId}`).innerHTML = content;
   };

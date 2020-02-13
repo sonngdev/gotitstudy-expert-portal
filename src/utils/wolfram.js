@@ -27,6 +27,17 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     return node && isWolframNode(node) ? node.alt : '';
   };
 
+  const sendQuery = async (query) => {
+    const appid = 'GAUTX8-4YEVTW4VLL';
+    const input = encodeURIComponent(query);
+    const wolframUrl = `https://api.wolframalpha.com/v2/query?appid=${appid}&input=${input}&output=json`;
+    // TODO: Using a proxy to avoid CORS
+    const requestUrl = `https://cors-anywhere.herokuapp.com/${wolframUrl}`;
+    const headers = { Origin: window.location.origin };
+    const res = await fetch(requestUrl, { headers });
+    return res.json();
+  }
+
 
   /**
   |--------------------------------------------------
@@ -40,6 +51,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
         type: 'panel',
         items: [
           { type: 'textarea', name: 'query', label: 'Query' },
+          { type: 'button', name: 'preview', text: 'Preview' },
           { type: 'htmlpanel', html: `<div id="${wolframPreviewId}"></div>` },
           { type: 'htmlpanel', html: `<textarea id="${wolframEditorId}" class="tiny-editor"></textarea>` },
         ],
@@ -50,6 +62,15 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
       ],
       initialData: {
         query: getSelectedQuery(),
+      },
+      onAction: async (dialog, details) => {
+        if (details.name !== 'preview') return;
+
+        const query = getQuery(dialog);
+        if (!query) return;
+
+        const result = await sendQuery(query);
+        console.log(result);
       },
       onSubmit(dialog) {
         console.log('submitted');

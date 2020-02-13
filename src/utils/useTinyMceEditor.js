@@ -5,6 +5,7 @@ import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
 import '@wiris/mathtype-tinymce5';
 import './latex';
+import './wolfram';
 
 export function useTinyMceEditor(id, onChange) {
   const [editor, setEditor] = useState(null);
@@ -21,8 +22,8 @@ export function useTinyMceEditor(id, onChange) {
       skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
       menubar: false,
       branding: false,
-      plugins: 'link lists tiny_mce_wiris latex',
-      toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor latex',
+      plugins: 'link lists wolfram tiny_mce_wiris latex',
+      toolbar: 'bold italic underline strikethrough bullist numlist link wolfram tiny_mce_wiris_formulaEditor latex',
       setup: (ed) => {
         setEditor(ed);
         ed.on('keyup change', () => onChange(ed.getContent()));

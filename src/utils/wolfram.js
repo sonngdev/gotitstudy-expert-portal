@@ -10,7 +10,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
 
   const wolframPreviewId = `${wolframClass}-preview`;
 
-  const wolframEditorId = 'Wolframeditor'
+  const wolframEditorId = 'Wolframeditor';
 
   /**
   |--------------------------------------------------
@@ -36,7 +36,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     const headers = { Origin: window.location.origin };
     const res = await fetch(requestUrl, { headers });
     return res.json();
-  }
+  };
 
 
   /**
@@ -86,7 +86,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
       plugins: 'link lists tiny_mce_wiris latex',
       toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor latex',
     });
-  }
+  };
 
 
   /**

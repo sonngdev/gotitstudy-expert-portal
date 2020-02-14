@@ -8,7 +8,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   */
   const wolframClass = 'Wolframnode';
 
-  const wolframPreviewId = `${wolframClass}-preview`;
+  const wolframResultId = `${wolframClass}-result`;
 
   const wolframEditorId = 'Wolframeditor';
 
@@ -67,8 +67,8 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
         type: 'panel',
         items: [
           { type: 'textarea', name: 'query', label: 'Query' },
-          { type: 'button', name: 'preview', text: 'Preview' },
-          { type: 'htmlpanel', html: `<div id="${wolframPreviewId}"></div>` },
+          { type: 'button', name: 'get_result', text: 'Get result' },
+          { type: 'htmlpanel', html: `<div id="${wolframResultId}"></div>` },
           { type: 'htmlpanel', html: `<textarea id="${wolframEditorId}" class="tiny-editor"></textarea>` },
         ],
       },
@@ -80,7 +80,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
         query: getSelectedQuery(),
       },
       onAction: async (dialog, details) => {
-        if (details.name !== 'preview') return;
+        if (details.name !== 'get_result') return;
 
         const query = getQuery(dialog);
         if (!query) return;
@@ -93,7 +93,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
           }
         } = await sendQuery(query);
 
-        document.getElementById(wolframPreviewId).innerHTML = pods.map((pod) => pod.markup.data).join('');
+        document.getElementById(wolframResultId).innerHTML = pods.map((pod) => pod.markup.data).join('');
         // const content = success
         //   ? getContentFromPods(pods)
         //   : getContentFromError(error);

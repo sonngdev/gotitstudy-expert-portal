@@ -100,6 +100,8 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   |--------------------------------------------------
   */
   const openDialog = () => {
+    let ed;
+
     editor.windowManager.open({
 
       title: 'Wolfram Alpha query',
@@ -145,7 +147,8 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
       },
 
       onSubmit(dialog) {
-        console.log('submitted');
+        editor.setContent(ed.getContent());
+        dialog.close();
       },
     });
 
@@ -153,7 +156,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
      * Inner editor
      * https://www.tiny.cloud/docs/api/tinymce/tinymce.editor/
      */
-    const ed = new tinymce.Editor(
+    ed = new tinymce.Editor(
       wolframEditorId,
       {
         skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,

@@ -9,6 +9,8 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
 
   const wolframResultId = 'Wolframresult';
 
+  const wolframResultImgClass = 'Wolframresult-img'
+
   const wolframEditorId = 'Wolframeditor';
 
   /**
@@ -58,7 +60,14 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     },
   }) => (
     `<div style="margin-bottom: 8px;">
-      <img src="${src}" alt="${alt}" title="${title}" width="${width}" height="${height}" />
+      <img
+        class="${wolframResultImgClass}"
+        src="${src}"
+        alt="${alt}"
+        title="${title}"
+        width="${width}"
+        height="${height}"
+      />
     </div>`
   );
 
@@ -144,6 +153,26 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     }, tinymce.EditorManager);
 
     ed.render();
+
+    /**
+     * Event delegation
+     */
+    document.getElementById(wolframResultId).addEventListener('click', ({ target }) => {
+      if (target.nodeName === 'IMG' && [...target.classList].includes(wolframResultImgClass)) {
+        const { src, alt, title, width, height } = target;
+        const content = `
+          <img
+            class="${wolframClass}"
+            src="${src}"
+            alt="${alt}"
+            title="${title}"
+            width="${width}"
+            height="${height}"
+          />`;
+        ed.insertContent(content);
+        console.log(ed.getContent())
+      }
+    })
   };
 
 

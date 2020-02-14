@@ -1,0 +1,4 @@
+.explanation-editors {
+  height: calc(100vh - 235px);
+  overflow: auto;
+}

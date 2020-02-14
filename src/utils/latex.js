@@ -45,7 +45,9 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   |--------------------------------------------------
   */
   const openDialog = () => editor.windowManager.open({
+
     title: 'LaTeX expression',
+
     body: {
       type: 'panel',
       items: [
@@ -54,13 +56,16 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
         { type: 'htmlpanel', html: `<div id="${latexPreviewId}"></div>` },
       ],
     },
+
     buttons: [
       { type: 'cancel', text: 'Cancel' },
       { type: 'submit', text: 'Insert', primary: true },
     ],
+
     initialData: {
       expression: getSelectedExpression(),
     },
+
     onAction(dialog, details) {
       if (details.name !== 'preview') return;
 
@@ -71,6 +76,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
       const content = `<img src="${src}" alt="${expression}" role="math" />`;
       setPreview(content);
     },
+
     onSubmit(dialog) {
       const expression = getExpression(dialog);
       if (!expression) return;

@@ -83,7 +83,9 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   */
   const openDialog = () => {
     editor.windowManager.open({
+
       title: 'Wolfram Alpha query',
+
       body: {
         type: 'panel',
         items: [
@@ -93,13 +95,16 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
           { type: 'htmlpanel', html: `<textarea id="${wolframEditorId}">${editor.getContent()}</textarea>` },
         ],
       },
+
       buttons: [
         { type: 'cancel', text: 'Cancel' },
         { type: 'submit', text: 'Insert', primary: true },
       ],
+
       initialData: {
         query: getSelectedQuery(),
       },
+
       onAction: async (dialog, details) => {
         if (details.name !== 'get_result') return;
 
@@ -120,6 +125,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
 
         setResult(content);
       },
+
       onSubmit(dialog) {
         console.log('submitted');
       },

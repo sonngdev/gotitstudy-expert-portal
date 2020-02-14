@@ -1,5 +1,4 @@
-/* eslint-disable prefer-arrow-callback */
-
+// eslint-disable-next-line prefer-arrow-callback
 tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   /**
   |--------------------------------------------------
@@ -8,7 +7,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   */
   const wolframClass = 'Wolframnode';
 
-  const wolframResultId = `${wolframClass}-result`;
+  const wolframResultId = 'Wolframresult';
 
   const wolframEditorId = 'Wolframeditor';
 
@@ -34,7 +33,6 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
       + `?appid=${appid}`
       + `&input=${input}`
       + '&output=json'
-      + '&format=html'
   );
 
   const sendQuery = async (query) => {
@@ -50,8 +48,31 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     return res.json();
   };
 
-  const getContentFromPods = (pods) => {
+  const mapSubpods = ({
+    img: {
+      src,
+      alt,
+      title,
+      width,
+      height,
+    },
+  }) => (
+    `<div style="margin-bottom: 8px;">
+      <img src="${src}" alt="${alt}" title="${title}" width="${width}" height="${height}" />
+    </div>`
+  );
 
+  const mapPod = ({ title, subpods }) => (
+    `<h2>${title}</h2>
+    ${subpods.map(mapSubpods).join('')}`
+  );
+
+  const getContentFromPods = (pods) => pods.map(mapPod).join('');
+
+  const getContentFromError = (error) => `<p>${error || 'There was an error'}</p>`;
+
+  const setResult = (result) => {
+    document.getElementById(wolframResultId).innerHTML = result;
   };
 
 
@@ -90,13 +111,14 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
             success,
             error,
             pods,
-          }
+          },
         } = await sendQuery(query);
 
-        document.getElementById(wolframResultId).innerHTML = pods.map((pod) => pod.markup.data).join('');
-        // const content = success
-        //   ? getContentFromPods(pods)
-        //   : getContentFromError(error);
+        const content = success
+          ? getContentFromPods(pods)
+          : getContentFromError(error);
+
+        setResult(content);
       },
       onSubmit(dialog) {
         console.log('submitted');

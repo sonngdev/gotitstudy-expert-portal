@@ -34,6 +34,16 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
     `https://math.now.sh?from=${encodeURIComponent(expression)}`
   );
 
+  const getLatexImg = (expr, className = '') => (
+    `<img
+      class="${className}"
+      src="${getFormulaSrc(expr)}"
+      alt="${expr}"
+      title="${expr}"
+      role="math"
+    />`
+  );
+
   const setPreview = (content) => {
     document.getElementById(latexPreviewId).innerHTML = content;
   };
@@ -72,18 +82,14 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
       const expression = getExpression(dialog);
       if (!expression) return;
 
-      const src = getFormulaSrc(expression);
-      const content = `<img src="${src}" alt="${expression}" role="math" />`;
-      setPreview(content);
+      setPreview(getLatexImg(expression));
     },
 
     onSubmit(dialog) {
       const expression = getExpression(dialog);
       if (!expression) return;
 
-      const src = getFormulaSrc(expression);
-      const content = `<img class="${latexClass}" src="${src}" alt="${expression}" role="math"/>`;
-      editor.insertContent(content);
+      editor.insertContent(getLatexImg(expression, latexClass));
 
       dialog.close();
     },

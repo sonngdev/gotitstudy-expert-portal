@@ -153,13 +153,17 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
      * Inner editor
      * https://www.tiny.cloud/docs/api/tinymce/tinymce.editor/
      */
-    const ed = new tinymce.Editor(wolframEditorId, {
-      skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
-      menubar: false,
-      branding: false,
-      plugins: 'link lists tiny_mce_wiris latex',
-      toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor latex',
-    }, tinymce.EditorManager);
+    const ed = new tinymce.Editor(
+      wolframEditorId,
+      {
+        skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
+        menubar: false,
+        branding: false,
+        plugins: 'link lists tiny_mce_wiris latex',
+        toolbar: 'bold italic underline strikethrough bullist numlist link tiny_mce_wiris_formulaEditor latex',
+      },
+      tinymce.EditorManager,
+    );
 
     ed.render();
 

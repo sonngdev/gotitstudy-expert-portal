@@ -27,15 +27,31 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     return node && isWolframNode(node) ? node.alt : '';
   };
 
-  const sendQuery = async (query) => {
-    const appid = 'GAUTX8-4YEVTW4VLL';
-    const input = encodeURIComponent(query);
-    const wolframUrl = `https://api.wolframalpha.com/v2/query?appid=${appid}&input=${input}&output=json`;
+  const getRequestUrl = (appid, input) => (
     // TODO: Using a proxy to avoid CORS
-    const requestUrl = `https://cors-anywhere.herokuapp.com/${wolframUrl}`;
-    const headers = { Origin: window.location.origin };
-    const res = await fetch(requestUrl, { headers });
+    'https://cors-anywhere.herokuapp.com/'
+      + 'https://api.wolframalpha.com/v2/query'
+      + `?appid=${appid}`
+      + `&input=${input}`
+      + '&output=json'
+      + '&format=html'
+  );
+
+  const sendQuery = async (query) => {
+    // TODO: Catch errors
+    const res = await fetch(
+      getRequestUrl('GAUTX8-4YEVTW4VLL', encodeURIComponent(query)),
+      {
+        headers: {
+          Origin: window.location.origin,
+        },
+      },
+    );
     return res.json();
+  };
+
+  const getContentFromPods = (pods) => {
+
   };
 
 
@@ -69,8 +85,18 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
         const query = getQuery(dialog);
         if (!query) return;
 
-        const result = await sendQuery(query);
-        console.log(result);
+        const {
+          queryresult: {
+            success,
+            error,
+            pods,
+          }
+        } = await sendQuery(query);
+
+        document.getElementById(wolframPreviewId).innerHTML = pods.map((pod) => pod.markup.data).join('');
+        // const content = success
+        //   ? getContentFromPods(pods)
+        //   : getContentFromError(error);
       },
       onSubmit(dialog) {
         console.log('submitted');

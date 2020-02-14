@@ -4,7 +4,7 @@ import './styles/ExplanationEditors.css';
 
 export function ExplanationEditors() {
   return (
-    <div className="explanation-editors">
+    <div className="explanation-editors u-paddingRightSmall">
       <h5>Theory or Concept</h5>
       <TinyEditor id="concept-editor" />
 

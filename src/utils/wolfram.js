@@ -9,7 +9,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
 
   const wolframResultId = 'Wolframresult';
 
-  const wolframResultImgClass = 'Wolframresult-img'
+  const wolframResultImgClass = 'Wolframresult-img';
 
   const wolframEditorId = 'Wolframeditor';
 
@@ -18,7 +18,9 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   | HELPERS
   |--------------------------------------------------
   */
-  const isWolframNode = (node) => [...node.classList].includes(wolframClass);
+  const hasClass = (node, className) => [...node.classList].includes(className);
+
+  const isWolframNode = (node) => hasClass(node, wolframClass);
 
   const getQuery = (dialog) => dialog.getData().query.trim();
 
@@ -50,24 +52,29 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     return res.json();
   };
 
-  const mapSubpods = ({
-    img: {
+  const getWolframImg = (
+    {
       src,
       alt,
       title,
       width,
       height,
     },
-  }) => (
+    className,
+  ) => (
+    `<img
+      class="${className}"
+      src="${src}"
+      alt="${alt}"
+      title="${title}"
+      width="${width}"
+      height="${height}"
+    />`
+  );
+
+  const mapSubpods = ({ img }) => (
     `<div style="margin-bottom: 8px;">
-      <img
-        class="${wolframResultImgClass}"
-        src="${src}"
-        alt="${alt}"
-        title="${title}"
-        width="${width}"
-        height="${height}"
-      />
+      ${getWolframImg(img, wolframResultImgClass)}
     </div>`
   );
 
@@ -83,6 +90,8 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   const setResult = (result) => {
     document.getElementById(wolframResultId).innerHTML = result;
   };
+
+  const isWolframResult = (node) => hasClass(node, wolframResultImgClass);
 
 
   /**
@@ -158,21 +167,10 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
      * Event delegation
      */
     document.getElementById(wolframResultId).addEventListener('click', ({ target }) => {
-      if (target.nodeName === 'IMG' && [...target.classList].includes(wolframResultImgClass)) {
-        const { src, alt, title, width, height } = target;
-        const content = `
-          <img
-            class="${wolframClass}"
-            src="${src}"
-            alt="${alt}"
-            title="${title}"
-            width="${width}"
-            height="${height}"
-          />`;
-        ed.insertContent(content);
-        console.log(ed.getContent())
+      if (isWolframResult(target)) {
+        ed.insertContent(getWolframImg(target, wolframClass));
       }
-    })
+    });
   };
 
 

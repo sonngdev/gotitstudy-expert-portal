@@ -13,12 +13,6 @@ export function useTinyMceEditor(id, onChange) {
   useEffect(() => {
     tinymce.init({
       selector: `#${id}`,
-      /**
-       * Convenience aside, the `auto_focus` attribute is required to avoid a
-       * Mathtype bug: if user tries to insert a formula when the editor has
-       * not been focused (once is enough), an error is thrown.
-       */
-      auto_focus: id,
       skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
       menubar: false,
       branding: false,

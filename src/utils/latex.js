@@ -35,7 +35,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   );
 
   const setPreview = (content) => {
-    document.querySelector(`#${latexPreviewId}`).innerHTML = content;
+    document.getElementById(latexPreviewId).innerHTML = content;
   };
 
 

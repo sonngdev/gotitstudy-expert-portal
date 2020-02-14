@@ -90,7 +90,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
           { type: 'textarea', name: 'query', label: 'Query' },
           { type: 'button', name: 'get_result', text: 'Get result' },
           { type: 'htmlpanel', html: `<div id="${wolframResultId}"></div>` },
-          { type: 'htmlpanel', html: `<textarea id="${wolframEditorId}" class="tiny-editor"></textarea>` },
+          { type: 'htmlpanel', html: `<textarea id="${wolframEditorId}">${editor.getContent()}</textarea>` },
         ],
       },
       buttons: [

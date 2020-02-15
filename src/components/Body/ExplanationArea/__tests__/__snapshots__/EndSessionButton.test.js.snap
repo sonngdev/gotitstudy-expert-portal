@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EndSessionButton /> renders 1`] = `
+"<Fragment>
+  <Button className=\\"end-session\\" onClick={[Function: showModal]} nonUppercase={false} variant=\\"primary\\">
+    End session
+  </Button>
+  <Modal size=\\"small\\" show={false} relative={false} transition={{...}}>
+    <Modal.Header closeButton={true}>
+      <ModalTitle uText650 uTextCenter>
+        Stop working
+      </ModalTitle uText650 uTextCenter>
+    </Modal.Header>
+    <ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
+      Are you sure you want to end this session? This action cannot be undone.
+    </ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
+    <ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd className=\\"u-flex\\">
+      <Button variant=\\"secondary\\" className=\\"cancel\\" onClick={[Function: hideModal]} nonUppercase={false}>
+        Cancel
+      </Button>
+      <Button variant=\\"primary\\" className=\\"confirm\\" onClick={[Function: endSession]} nonUppercase={false}>
+        Stop working
+      </Button>
+    </ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd>
+  </Modal>
+</Fragment>"
+`;

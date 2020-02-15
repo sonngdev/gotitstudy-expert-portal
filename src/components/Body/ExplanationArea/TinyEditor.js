@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useTinyMceEditor } from '../../../utils';
+import { weakRandomString, useTinyMceEditor } from '../../../utils';
 
 /**
  * Custom tinymce React component:
@@ -21,10 +21,11 @@ export function TinyEditor({ id, onChange }) {
 }
 
 TinyEditor.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   onChange: PropTypes.func,
 };
 
 TinyEditor.defaultProps = {
+  id: `tinymce-${weakRandomString(5)}`,
   onChange: () => {},
 };

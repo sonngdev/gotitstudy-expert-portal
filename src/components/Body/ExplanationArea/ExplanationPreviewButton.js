@@ -1,4 +1,5 @@
 import React from 'react';
+import { TinyEditor } from './TinyEditor';
 import { ButtonWithModal } from '../../shared';
 
 export function ExplanationPreviewButton() {
@@ -11,7 +12,12 @@ export function ExplanationPreviewButton() {
       buttonAction="Preview ▶"
       modalSize="medium"
       modalTitle="Explanation preview"
-      modalBody="Hello"
+      modalBody={(
+        <TinyEditor
+          config={{ toolbar: false, statusbar: false, readonly: true }}
+          value="Hello"
+        />
+      )}
       confirmButtonText="Submit"
       onConfirm={() => window.location.reload()}
     />

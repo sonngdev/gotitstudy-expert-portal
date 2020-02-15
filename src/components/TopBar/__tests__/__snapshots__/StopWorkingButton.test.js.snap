@@ -1,33 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StopWorkingButton /> renders 1`] = `
-"<Fragment>
-  <Button variant=\\"white_outline\\" size=\\"small\\" width=\\"full\\" className=\\"stop-working\\" onClick={[Function: showModal]} nonUppercase={false}>
-    <ButtonLabel uInlineBlock>
-      Stop working
-    </ButtonLabel uInlineBlock>
-  </Button>
-  <Modal show={false} size=\\"small\\" onHide={[Function: hideModal]} relative={false} transition={{...}}>
-    <Modal.Header closeButton={true}>
-      <ModalTitle uText650 uTextCenter>
-        Stop working
-      </ModalTitle uText650 uTextCenter>
-    </Modal.Header>
-    <ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
-      Are you sure you want to stop working?
-    </ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
-    <ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd className=\\"u-flex\\">
-      <Button variant=\\"secondary\\" className=\\"cancel\\" onClick={[Function: hideModal]} nonUppercase={false}>
-        <ButtonLabel uInlineBlock>
-          Cancel
-        </ButtonLabel uInlineBlock>
-      </Button>
-      <Button variant=\\"primary\\" className=\\"confirm\\" onClick={[Function: stopWorking]} nonUppercase={false}>
-        <ButtonLabel uInlineBlock>
-          Stop working
-        </ButtonLabel uInlineBlock>
-      </Button>
-    </ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd>
-  </Modal>
-</Fragment>"
-`;
+exports[`<StopWorkingButton /> renders 1`] = `"<ButtonWithModal buttonProps={{...}} buttonAction=\\"Stop working\\" modalBody=\\"Are you sure you want to stop working?\\" onConfirm={[Function: onConfirm]} modalSize=\\"small\\" />"`;

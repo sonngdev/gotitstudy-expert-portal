@@ -1,5 +1,6 @@
 import React from 'react';
 import { TinyEditor } from './TinyEditor';
+import { ExplanationFooter } from './ExplanationFooter';
 import './styles/index.css';
 
 export function ExplanationArea() {
@@ -18,6 +19,8 @@ export function ExplanationArea() {
         <h5 className="u-marginTopLarge">Final Answer</h5>
         <TinyEditor id="answer-editor" />
       </div>
+
+      <ExplanationFooter />
     </div>
   );
 }

@@ -22,5 +22,6 @@ exports[`<ExplanationArea /> renders 1`] = `
     </h5>
     <TinyEditor id=\\"answer-editor\\" value=\\"\\" onChange={[Function: onChange]} />
   </div>
+  <ExplanationFooter />
 </div>"
 `;

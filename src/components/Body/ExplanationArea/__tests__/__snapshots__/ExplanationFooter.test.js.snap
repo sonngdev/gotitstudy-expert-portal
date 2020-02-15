@@ -6,6 +6,6 @@ exports[`<ExplanationFooter /> renders 1`] = `
     <EndSessionButton className=\\"u-marginRightSmall\\" />
     <FlagSessionButton />
   </div>
-  <PreviewButton />
+  <ExplanationPreviewButton />
 </div>"
 `;

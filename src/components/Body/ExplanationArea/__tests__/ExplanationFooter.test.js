@@ -22,6 +22,6 @@ describe('<ExplanationFooter />', () => {
   });
 
   it('contains a button to preview explanation', () => {
-    expect(wrapper.find('PreviewButton').exists()).toBe(true);
+    expect(wrapper.find('ExplanationPreviewButton').exists()).toBe(true);
   });
 });

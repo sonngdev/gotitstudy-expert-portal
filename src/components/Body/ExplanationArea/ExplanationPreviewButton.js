@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonWithModal } from '../../shared';
 
-export function PreviewButton() {
+export function ExplanationPreviewButton() {
   return (
     <ButtonWithModal
       buttonProps={{

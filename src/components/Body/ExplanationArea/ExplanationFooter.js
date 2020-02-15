@@ -1,7 +1,7 @@
 import React from 'react';
 import { EndSessionButton } from './EndSessionButton';
 import { FlagSessionButton } from './FlagSessionButton';
-import { PreviewButton } from './PreviewButton';
+import { ExplanationPreviewButton } from './ExplanationPreviewButton';
 import './styles/ExplanationFooter.css';
 
 export function ExplanationFooter() {
@@ -12,7 +12,7 @@ export function ExplanationFooter() {
         <FlagSessionButton />
       </div>
 
-      <PreviewButton />
+      <ExplanationPreviewButton />
     </div>
   );
 }

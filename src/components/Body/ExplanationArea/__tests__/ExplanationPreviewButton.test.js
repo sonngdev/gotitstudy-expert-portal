@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PreviewButton } from '../PreviewButton';
+import { ExplanationPreviewButton } from '../ExplanationPreviewButton';
 
-describe('<PreviewButton />', () => {
+describe('<ExplanationPreviewButton />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<PreviewButton />);
+    wrapper = shallow(<ExplanationPreviewButton />);
   });
 
   it('renders', () => {

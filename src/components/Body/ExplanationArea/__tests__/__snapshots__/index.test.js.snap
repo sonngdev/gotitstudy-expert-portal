@@ -12,16 +12,16 @@ exports[`<ExplanationArea /> renders 1`] = `
     <h5>
       Theory or Concept
     </h5>
-    <TinyEditor id=\\"concept-editor\\" value=\\"\\" onChange={[Function: onChange]} config={{...}} />
+    <TinyEditor id=\\"concept-editor\\" value=\\"\\" onChange={[Function: bound _dispatchAction]} config={{...}} />
     <h5 className=\\"u-marginTopLarge\\">
       Step By Step Instructions
     </h5>
-    <TinyEditor id=\\"instructions-editor\\" value=\\"\\" onChange={[Function: onChange]} config={{...}} />
+    <TinyEditor id=\\"instructions-editor\\" value=\\"\\" onChange={[Function: bound _dispatchAction]} config={{...}} />
     <h5 className=\\"u-marginTopLarge\\">
       Final Answer
     </h5>
-    <TinyEditor id=\\"answer-editor\\" value=\\"\\" onChange={[Function: onChange]} config={{...}} />
+    <TinyEditor id=\\"answer-editor\\" value=\\"\\" onChange={[Function: bound _dispatchAction]} config={{...}} />
   </div>
-  <ExplanationFooter />
+  <ExplanationFooter explanations={{...}} />
 </div>"
 `;

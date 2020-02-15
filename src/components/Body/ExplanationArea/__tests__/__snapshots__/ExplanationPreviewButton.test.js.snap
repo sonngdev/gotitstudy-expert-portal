@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ExplanationPreviewButton /> renders 1`] = `"<ButtonWithModal buttonProps={{...}} buttonAction=\\"Preview ▶\\" modalSize=\\"medium\\" modalTitle=\\"Explanation preview\\" modalBody=\\"Hello\\" confirmButtonText=\\"Submit\\" onConfirm={[Function: onConfirm]} />"`;
+exports[`<ExplanationPreviewButton /> renders 1`] = `"<ButtonWithModal buttonProps={{...}} buttonAction=\\"Preview ▶\\" modalSize=\\"medium\\" modalTitle=\\"Explanation preview\\" modalBody={{...}} confirmButtonText=\\"Submit\\" onConfirm={[Function: onConfirm]} />"`;

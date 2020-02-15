@@ -33,6 +33,7 @@
         "import/prefer-default-export": "off",
         "import/no-duplicates": "warn",
         "react/jsx-filename-extension": "off",
+        "react/jsx-tag-spacing": "warn",
         "react/prop-types": "warn"
     }
 }

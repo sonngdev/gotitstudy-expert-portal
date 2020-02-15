@@ -6,7 +6,7 @@ describe('<TinyEditor />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<TinyEditor id="tiny-editor"/>);
+    wrapper = shallow(<TinyEditor id="tiny-editor" />);
   });
 
   it('renders', () => {

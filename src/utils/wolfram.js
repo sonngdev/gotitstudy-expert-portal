@@ -52,16 +52,7 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
     return res.json();
   };
 
-  const getWolframImg = (
-    {
-      src,
-      alt,
-      title,
-      width,
-      height,
-    },
-    className,
-  ) => (
+  const getWolframImg = ({ src, alt, title, width, height }, className) => (
     `<img
       class="${className}"
       src="${src}"

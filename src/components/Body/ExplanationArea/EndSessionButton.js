@@ -19,4 +19,4 @@ EndSessionButton.propTypes = {
 
 EndSessionButton.defaultProps = {
   className: '',
-}
+};

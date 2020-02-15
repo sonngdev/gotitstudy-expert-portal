@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import tinymce from 'tinymce';
 import 'tinymce/themes/silver';
 import 'tinymce/plugins/link';
@@ -8,18 +8,18 @@ import './latex';
 import './wolfram';
 
 export function useTinyMceEditor(id, onChange, config) {
-  const [editor, setEditor] = useState(null);
-
   useEffect(() => {
+    let editor;
+
     tinymce.init({
       selector: `#${id}`,
       skin_url: `${process.env.PUBLIC_URL}/skins/ui/oxide`,
       menubar: false,
       branding: false,
       plugins: 'link lists wolfram tiny_mce_wiris latex',
-      toolbar: 'bold italic underline strikethrough bullist numlist link wolfram tiny_mce_wiris_formulaEditor latex',
+      toolbar: 'bold italic underline strikethrough bullist numlist link wolfram tiny_mce_wiris_formulaeditortor latex',
       setup: (ed) => {
-        setEditor(ed);
+        editor = ed;
         ed.on('keyup change', () => onChange(ed.getContent()));
       },
       ...config,

@@ -7,7 +7,7 @@ import '@wiris/mathtype-tinymce5';
 import './latex';
 import './wolfram';
 
-export function useTinyMceEditor(id, onChange) {
+export function useTinyMceEditor(id, onChange, config) {
   const [editor, setEditor] = useState(null);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export function useTinyMceEditor(id, onChange) {
         setEditor(ed);
         ed.on('keyup change', () => onChange(ed.getContent()));
       },
+      ...config,
     });
 
     return () => tinymce.remove(editor);

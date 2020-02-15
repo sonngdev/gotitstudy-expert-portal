@@ -6,11 +6,11 @@ import { weakRandomString, useTinyMceEditor } from '../../../utils';
  * Custom tinymce React component:
  * https://www.tiny.cloud/blog/how-to-integrate-react-with-tinymce/
  */
-export function TinyEditor({ id, onChange }) {
-  const [input, setInput] = useState('');
-  const bindAndCall = (value) => {
-    setInput(value);
-    onChange(value);
+export function TinyEditor({ id, value, onChange }) {
+  const [input, setInput] = useState(value);
+  const bindAndCall = (val) => {
+    setInput(val);
+    onChange(val);
   };
 
   useTinyMceEditor(id, bindAndCall);
@@ -22,10 +22,12 @@ export function TinyEditor({ id, onChange }) {
 
 TinyEditor.propTypes = {
   id: PropTypes.string,
+  value: PropTypes.string,
   onChange: PropTypes.func,
 };
 
 TinyEditor.defaultProps = {
   id: `tinymce-${weakRandomString(5)}`,
+  value: '',
   onChange: () => {},
 };

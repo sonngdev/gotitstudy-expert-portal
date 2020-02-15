@@ -27,7 +27,7 @@
         "no-multi-spaces": "warn",
         "no-undef": "off",
         "no-unused-vars": "warn",
-        "object-curly-newline": "warn",
+        "object-curly-newline": "off",
         "prefer-arrow-callback": "warn",
         "semi": "warn",
         "import/prefer-default-export": "off",

@@ -15,16 +15,11 @@ export function ExplanationPreviewButton({ explanations }) {
       modalTitle="Explanation preview"
       modalBody={(
         <TinyEditor
-          config={{ toolbar: false, statusbar: false, readonly: false }}
+          config={{ toolbar: false, statusbar: false, readonly: true }}
           value={(
-            `<h4>Theory or Concept</h4>
-            ${explanations[0]}
-            <br />
-            <h4>Step By Step Instructions</h4>
-            ${explanations[1]}
-            <br />
-            <h4>Final Answer</h4>
-            ${explanations[2]}`
+            `<h4>Theory or Concept</h4>${explanations[0]}<br />`
+            + `<h4>Step By Step Instructions</h4>${explanations[1]}<br />`
+            + `<h4>Final Answer</h4>${explanations[2]}`
           )}
         />
       )}

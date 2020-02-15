@@ -13,9 +13,11 @@ describe('<ButtonWithModal />', () => {
     wrapper = shallow(
       <ButtonWithModal
         buttonProps={{ className: 'button' }}
-        buttonAction="Foo bar"
+        buttonAction="Action"
         modalSize="medium"
-        modalBody={<p>Bar baz</p>}
+        modalTitle="Modal title"
+        modalBody={<p>Modal body</p>}
+        confirmButtonText="Confirm button"
         onConfirm={onConfirm}
       />,
     );
@@ -32,7 +34,7 @@ describe('<ButtonWithModal />', () => {
   it('contains a button', () => {
     const button = wrapper.find('.button');
     expect(button.exists()).toBe(true);
-    expect(button.text()).toBe('Foo bar');
+    expect(button.text()).toBe('Action');
   });
 
   it('has a modal that is initially hidden', () => {
@@ -57,7 +59,7 @@ describe('<ButtonWithModal />', () => {
     it('contains a title', () => {
       const title = wrapper.find(Modal.Title);
       expect(title.exists()).toBe(true);
-      expect(title.text()).toBe('Foo bar');
+      expect(title.text()).toBe('Modal title');
     });
 
     it('contains a body', () => {
@@ -66,13 +68,13 @@ describe('<ButtonWithModal />', () => {
 
       const child = body.childAt(0);
       expect(child.name()).toBe('p');
-      expect(child.text()).toBe('Bar baz');
+      expect(child.text()).toBe('Modal body');
     });
 
     it('contains a confirm button', () => {
       const confirm = wrapper.find('Modal').find('.confirm');
       expect(confirm.exists()).toBe(true);
-      expect(confirm.text()).toBe('Foo bar');
+      expect(confirm.text()).toBe('Confirm button');
     });
 
     it('hides when cancel button is clicked', () => {

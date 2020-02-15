@@ -3,17 +3,17 @@
 exports[`<ButtonWithModal /> renders 1`] = `
 "<Fragment>
   <Button className=\\"button\\" onClick={[Function: showModal]} nonUppercase={false} variant=\\"primary\\">
-    Foo bar
+    Action
   </Button>
   <Modal size=\\"medium\\" show={false} onHide={[Function: hideModal]} relative={false} transition={{...}}>
     <Modal.Header closeButton={true}>
       <ModalTitle uText650 uTextCenter>
-        Foo bar
+        Modal title
       </ModalTitle uText650 uTextCenter>
     </Modal.Header>
     <ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
       <p>
-        Bar baz
+        Modal body
       </p>
     </ModalBody uPaddingHorizontalMedium uBackgroundWhite uPaddingTopSmall uPaddingBottomMedium>
     <ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd className=\\"u-flex\\">
@@ -21,7 +21,7 @@ exports[`<ButtonWithModal /> renders 1`] = `
         Cancel
       </Button>
       <Button variant=\\"primary\\" className=\\"confirm\\" onClick={[Function: confirmAndClose]} nonUppercase={false}>
-        Foo bar
+        Confirm button
       </Button>
     </ModalFooter uBackgroundLightest uPaddingMedium uFlex uAlignItemsCenter uJustifyContentEnd>
   </Modal>

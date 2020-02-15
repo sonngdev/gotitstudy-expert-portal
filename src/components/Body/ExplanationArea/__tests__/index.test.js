@@ -17,4 +17,8 @@ describe('<ExplanationArea />', () => {
     expect(wrapper.text()).toContain('Problem explanation');
     expect(wrapper.text()).toContain('Complete all 3 sections before submitting your explanation');
   });
+
+  it('contains explanation editors', () => {
+    expect(wrapper.find('ExplanationEditors').exists()).toBe(true);
+  });
 });

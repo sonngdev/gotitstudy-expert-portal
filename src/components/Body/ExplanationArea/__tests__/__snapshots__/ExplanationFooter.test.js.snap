@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExplanationFooter /> renders 1`] = `
+"<div className=\\"explanation-footer u-flex u-justifyContentBetween u-paddingRightSmall\\">
+  <div>
+    <EndSessionButton className=\\"u-marginRightSmall\\" />
+    <FlagSessionButton />
+  </div>
+  <PreviewButton />
+</div>"
+`;

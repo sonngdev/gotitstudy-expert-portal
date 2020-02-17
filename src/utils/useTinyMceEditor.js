@@ -17,7 +17,7 @@ export function useTinyMceEditor(id, onChange, config) {
       menubar: false,
       branding: false,
       plugins: 'link lists wolfram tiny_mce_wiris latex',
-      toolbar: 'bold italic underline strikethrough bullist numlist link wolfram tiny_mce_wiris_formulaeditortor latex',
+      toolbar: 'bold italic underline strikethrough bullist numlist link wolfram tiny_mce_wiris_formulaEditor latex',
       setup: (ed) => {
         editor = ed;
         ed.on('keyup change', () => onChange(ed.getContent()));

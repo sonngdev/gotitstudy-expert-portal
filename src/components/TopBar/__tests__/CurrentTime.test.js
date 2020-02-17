@@ -11,6 +11,8 @@ jest.mock('../../../utils', () => ({
    * Mock only part of a module, keep original implementation of
    * other functions.
    * https://stackoverflow.com/a/53402206/9744063
+   *
+   * Another way is documented in SessionTimer.test.js
    */
   ...(jest.requireActual('../../../utils')),
   getCurrentTime: jest.fn(),

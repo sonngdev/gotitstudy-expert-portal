@@ -1,4 +1,4 @@
-import React from 'react';
+import React, * as fromReact from 'react';
 import { shallow } from 'enzyme';
 import { SessionTimer } from '../SessionTimer';
 import { SESSION_DURATION } from '../../../constants';
@@ -12,6 +12,12 @@ describe('<SessionTimer />', () => {
   afterAll(() => jest.useRealTimers());
 
   beforeEach(() => {
+    /**
+     * Another way to mock only part of a module.
+     * The first way was documented in CurrentTime.test.js
+     */
+    fromReact.useEffect = jest.fn((fn) => fn());
+
     wrapper = shallow(<SessionTimer />);
   });
 
@@ -24,7 +30,7 @@ describe('<SessionTimer />', () => {
       .toBe(formatCountdownTimer(SESSION_DURATION));
   });
 
-  it.skip('counts down as time passes', () => {
+  it('counts down as time passes', () => {
     jest.advanceTimersByTime(2000);
     expect(wrapper.find('.stat').text())
       .toBe(formatCountdownTimer(SESSION_DURATION - 2000));

@@ -10,15 +10,15 @@ import { weakRandomString, useTinyMceEditor } from '../../../utils';
  */
 export function TinyEditor({ id, value, onChange, config }) {
   const [input, setInput] = useState(value);
-  const bindAndCall = (val) => {
-    setInput(val);
-    onChange(val);
+  const bindAndCall = (e) => {
+    setInput(e.target.value);
+    onChange(e);
   };
 
   useTinyMceEditor(id, bindAndCall, config);
 
   return (
-    <textarea id={id} value={input} onChange={(e) => bindAndCall(e.target.value)} />
+    <textarea id={id} value={input} onChange={bindAndCall} />
   );
 }
 

@@ -32,7 +32,8 @@ describe('<TinyEditor />', () => {
   });
 
   it('calls onChange each time input changes', () => {
-    wrapper.find('textarea').simulate('change', { target: { value: 'baz' } });
-    expect(onChange).toHaveBeenCalledWith('baz');
+    const e = { target: { value: 'baz' } };
+    wrapper.find('textarea').simulate('change', e);
+    expect(onChange).toHaveBeenCalledWith(e);
   });
 });

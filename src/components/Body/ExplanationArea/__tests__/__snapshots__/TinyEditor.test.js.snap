@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TinyEditor /> renders 1`] = `"<textarea id=\\"tiny-editor\\" value=\\"foo\\" onChange={[Function: onChange]} />"`;
+exports[`<TinyEditor /> renders 1`] = `"<textarea id=\\"tiny-editor\\" value=\\"foo\\" onChange={[Function: bindAndCall]} />"`;

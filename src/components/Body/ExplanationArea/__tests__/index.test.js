@@ -34,4 +34,18 @@ describe('<ExplanationArea />', () => {
   it('has Final Answer as the third section', () => {
     expect(wrapper.find('h5').at(2).text()).toBe('Final Answer');
   });
+
+  it('has separate and controlled editors', () => {
+    wrapper.find('TinyEditor').at(0).simulate('change', { target: { value: 'foo' } });
+    wrapper.find('TinyEditor').at(1).simulate('change', { target: { value: 'bar' } });
+    wrapper.find('TinyEditor').at(2).simulate('change', { target: { value: 'baz' } });
+
+    expect(wrapper.find('TinyEditor').at(0).prop('value')).toBe('foo');
+    expect(wrapper.find('TinyEditor').at(1).prop('value')).toBe('bar');
+    expect(wrapper.find('TinyEditor').at(2).prop('value')).toBe('baz');
+  });
+
+  it('includes a footer section', () => {
+    expect(wrapper.find('ExplanationFooter').exists()).toBe(true);
+  });
 });

@@ -45,14 +45,10 @@ describe('<SessionTimer />', () => {
   });
 
   it('reloads the page when time is up', () => {
-    const { location } = window;
-    delete window.location;
-    window.location = { reload: jest.fn() };
-
-    jest.advanceTimersByTime(SESSION_DURATION + 1000);
-    expect(window.location.reload).toHaveBeenCalled();
-
-    window.location = location;
+    mockWindowReload(() => {
+      jest.advanceTimersByTime(SESSION_DURATION + 1000);
+      expect(window.location.reload).toHaveBeenCalled();
+    });
   });
 
   it('has green background at the beginning', () => {
@@ -60,13 +56,9 @@ describe('<SessionTimer />', () => {
   });
 
   it('has red background at the end', () => {
-    const { location } = window;
-    delete window.location;
-    window.location = { reload: jest.fn() };
-
-    jest.advanceTimersByTime(SESSION_DURATION + 1000);
-    expect(wrapper.hasClass('u-backgroundNegative')).toBe(true);
-
-    window.location = location;
+    mockWindowReload(() => {
+      jest.advanceTimersByTime(SESSION_DURATION + 1000);
+      expect(wrapper.hasClass('u-backgroundNegative')).toBe(true);
+    });
   });
 });

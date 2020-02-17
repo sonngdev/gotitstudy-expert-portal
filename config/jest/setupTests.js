@@ -25,3 +25,14 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+global.mockWindowReload = (fn) => {
+  const { location } = window;
+  delete window.location;
+  window.location = { reload: jest.fn() };
+
+  fn();
+
+  window.location = location;
+
+}

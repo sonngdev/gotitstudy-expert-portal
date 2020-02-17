@@ -1,22 +1,26 @@
 import React, * as fromReact from 'react';
 import { shallow } from 'enzyme';
 import { SessionTimer } from '../SessionTimer';
-import { SESSION_DURATION } from '../../../constants';
+import * as fromUtils from '../../../constants';
 import { formatCountdownTimer } from '../../../utils';
 
 describe('<SessionTimer />', () => {
   let wrapper;
-
-  beforeAll(() => jest.useFakeTimers());
-
-  afterAll(() => jest.useRealTimers());
+  /**
+   * Mocking SESSION_DURATION because jest's `advanceTimersByTime`
+   * does not seem to work well with large numbers.
+   */
+  const SESSION_DURATION = 10000;
 
   beforeEach(() => {
+    jest.clearAllTimers();
+    jest.useFakeTimers();
     /**
      * Another way to mock only part of a module.
      * The first way was documented in CurrentTime.test.js
      */
     fromReact.useEffect = jest.fn((fn) => fn());
+    fromUtils.SESSION_DURATION = SESSION_DURATION;
 
     wrapper = shallow(<SessionTimer />);
   });
@@ -35,12 +39,12 @@ describe('<SessionTimer />', () => {
     expect(wrapper.find('.stat').text())
       .toBe(formatCountdownTimer(SESSION_DURATION - 2000));
 
-    jest.advanceTimersByTime(7000);
+    jest.advanceTimersByTime(4000);
     expect(wrapper.find('.stat').text())
-      .toBe(formatCountdownTimer(SESSION_DURATION - 9000));
+      .toBe(formatCountdownTimer(SESSION_DURATION - 6000));
   });
 
-  it.skip('reloads the page when time is up', () => {
+  it('reloads the page when time is up', () => {
     const { location } = window;
     delete window.location;
     window.location = { reload: jest.fn() };
@@ -55,8 +59,14 @@ describe('<SessionTimer />', () => {
     expect(wrapper.hasClass('u-backgroundPositive')).toBe(true);
   });
 
-  it.skip('has red background at the end', () => {
-    jest.advanceTimersByTime(SESSION_DURATION);
+  it('has red background at the end', () => {
+    const { location } = window;
+    delete window.location;
+    window.location = { reload: jest.fn() };
+
+    jest.advanceTimersByTime(SESSION_DURATION + 1000);
     expect(wrapper.hasClass('u-backgroundNegative')).toBe(true);
+
+    window.location = location;
   });
 });

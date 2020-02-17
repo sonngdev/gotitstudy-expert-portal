@@ -1,4 +1,5 @@
-// eslint-disable-next-line prefer-arrow-callback
+/* eslint-disable prefer-arrow-callback */
+
 tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   /**
   |--------------------------------------------------

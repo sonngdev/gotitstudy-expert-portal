@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /* eslint-disable prefer-arrow-callback */
 
 tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {

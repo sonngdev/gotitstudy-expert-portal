@@ -1,4 +1,4 @@
-import React from 'react';
+import React, * as fromReact from 'react';
 import moment from 'moment-timezone';
 import { shallow } from 'enzyme';
 import { getCurrentTime } from '../../../utils';
@@ -18,17 +18,20 @@ jest.mock('../../../utils', () => ({
   getCurrentTime: jest.fn(),
 }));
 
+fromReact.useEffect = jest.fn((fn) => fn());
+
 describe('<CurrentTime />', () => {
   let wrapper;
 
   beforeEach(() => {
+    jest.useFakeTimers();
     /**
      * Use `mockReset` to clear mock return values
      */
     getCurrentTime.mockReset();
     getCurrentTime
       .mockReturnValueOnce(moment(1581473066000).tz(DEFAULT_TIMEZONE))
-      .mockReturnValueOnce(moment(1581473067000).tz(DEFAULT_TIMEZONE));
+      .mockReturnValue(moment(1581473067000).tz(DEFAULT_TIMEZONE));
     wrapper = shallow(<CurrentTime />);
   });
 
@@ -42,14 +45,10 @@ describe('<CurrentTime />', () => {
     expect(calendarIcon.prop('name')).toBe('calendar');
   });
 
-  it.skip('shows current time', () => {
-    jest.useFakeTimers();
-
+  it('shows current time', () => {
     expect(wrapper.text()).toBe('Feb 11, 2020 20:04:26 CST');
 
     jest.advanceTimersByTime(1000);
     expect(wrapper.text()).toBe('Feb 11, 2020 20:04:27 CST');
-
-    jest.useRealTimers();
   });
 });

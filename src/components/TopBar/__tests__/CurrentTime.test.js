@@ -11,13 +11,15 @@ jest.mock('../../../utils', () => ({
    * Mock only part of a module, keep original implementation of
    * other functions.
    * https://stackoverflow.com/a/53402206/9744063
-   *
-   * Another way is documented in SessionTimer.test.js
    */
   ...(jest.requireActual('../../../utils')),
   getCurrentTime: jest.fn(),
 }));
 
+/**
+ * Another way to mock part of a module. Note that getCurrentTime
+ * cannot be mocked this way, as the imported object is read-only.
+ */
 fromReact.useEffect = jest.fn((fn) => fn());
 
 describe('<CurrentTime />', () => {

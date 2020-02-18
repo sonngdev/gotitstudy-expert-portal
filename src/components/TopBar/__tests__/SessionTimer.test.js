@@ -1,7 +1,7 @@
 import React, * as fromReact from 'react';
 import { shallow } from 'enzyme';
 import { SessionTimer } from '../SessionTimer';
-import * as fromUtils from '../../../constants';
+import * as fromConstants from '../../../constants';
 import { formatCountdownTimer } from '../../../utils';
 
 describe('<SessionTimer />', () => {
@@ -15,12 +15,8 @@ describe('<SessionTimer />', () => {
   beforeEach(() => {
     jest.clearAllTimers();
     jest.useFakeTimers();
-    /**
-     * Another way to mock only part of a module.
-     * The first way was documented in CurrentTime.test.js
-     */
     fromReact.useEffect = jest.fn((fn) => fn());
-    fromUtils.SESSION_DURATION = SESSION_DURATION;
+    fromConstants.SESSION_DURATION = SESSION_DURATION;
 
     wrapper = shallow(<SessionTimer />);
   });

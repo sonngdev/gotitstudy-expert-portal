@@ -18,6 +18,15 @@ export function TinyEditor({ id, value, onChange, config }) {
   useTinyMceEditor(id, bindAndCall, config);
 
   return (
+    /**
+     * Technically, `value` and `onChange` props are
+     * unnecessary here. However, having `value` is
+     * very useful in testing, and we can't have it
+     * without `onChange`, else eslint (or something)
+     * will complain. Change handler would be called
+     * only once anyway, so there is no harm in
+     * including it.
+     */
     <textarea id={id} value={input} onChange={bindAndCall} />
   );
 }

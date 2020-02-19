@@ -2330,11 +2330,6 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wiris/mathtype-tinymce5@^7.17.0":
-  version "7.17.0"
-  resolved "https://registry.yarnpkg.com/@wiris/mathtype-tinymce5/-/mathtype-tinymce5-7.17.0.tgz#b3eaaa69ee5ca8b96b9d56a0b675b1cde2c43383"
-  integrity sha512-iCk3qowtCzn3doOmA9blEmmYptzX2jBFcjdNkvgmle5Qi51wOK0GgDZiAehGodIvsOAIvn/G/m87SbLsX5TKCA==
-
 "@wojtekmaj/date-utils@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.0.0.tgz#97aebf5ab317cf40d56492642f921480d4f89342"

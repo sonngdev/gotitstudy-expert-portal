@@ -20,9 +20,11 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   | HELPERS
   |--------------------------------------------------
   */
-  const hasClass = (node, className) => [...node.classList].includes(className);
+  const hasClass = (className) => (node) => node.classList.contains(className);
 
-  const isWolframNode = (node) => hasClass(node, wolframClass);
+  const isWolframNode = hasClass(wolframClass);
+
+  const isWolframResult = hasClass(wolframResultImgClass);
 
   const getQuery = (dialog) => dialog.getData().query.trim();
 
@@ -83,8 +85,6 @@ tinymce.PluginManager.add('wolfram', function addWolframPlugin(editor) {
   const setResult = (result) => {
     document.getElementById(wolframResultId).innerHTML = result;
   };
-
-  const isWolframResult = (node) => hasClass(node, wolframResultImgClass);
 
 
   /**

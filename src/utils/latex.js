@@ -17,7 +17,7 @@ tinymce.PluginManager.add('latex', function addLatexPlugin(editor) {
   | HELPERS
   |--------------------------------------------------
   */
-  const isLatexFormula = (node) => [...node.classList].includes(latexClass);
+  const isLatexFormula = (node) => node.classList.contains(latexClass);
 
   const getExpression = (dialog) => dialog.getData().expression.trim();
 

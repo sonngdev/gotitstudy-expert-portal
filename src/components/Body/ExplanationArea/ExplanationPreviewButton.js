@@ -17,9 +17,9 @@ export function ExplanationPreviewButton({ explanations }) {
         <TinyEditor
           config={{ toolbar: false, statusbar: false, readonly: true }}
           value={(
-            `<h4>Theory or Concept</h4>${explanations[0]}<br />`
-            + `<h4>Step By Step Instructions</h4>${explanations[1]}<br />`
-            + `<h4>Final Answer</h4>${explanations[2]}`
+            `<strong>Theory or Concept</strong>${explanations[0]}`
+            + `<strong>Step By Step Instructions</strong>${explanations[1]}`
+            + `<strong>Final Answer</strong>${explanations[2]}`
           )}
         />
       )}

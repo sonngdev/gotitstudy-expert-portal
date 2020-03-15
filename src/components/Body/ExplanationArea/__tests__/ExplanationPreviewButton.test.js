@@ -29,9 +29,9 @@ describe('<ExplanationPreviewButton />', () => {
   it('displays the explanations of all 3 sections', () => {
     const value = wrapper.dive().find('TinyEditor').prop('value');
 
-    expect(value).toContain('<h4>Theory or Concept</h4><p>This is theory</p>');
-    expect(value).toContain('<h4>Step By Step Instructions</h4><img src="/graph" />');
-    expect(value).toContain('<h4>Final Answer</h4><span>Answer is 3</span>');
+    expect(value).toContain('<strong>Theory or Concept</strong><p>This is theory</p>');
+    expect(value).toContain('<strong>Step By Step Instructions</strong><img src="/graph" />');
+    expect(value).toContain('<strong>Final Answer</strong><span>Answer is 3</span>');
   });
 
   it('reloads window when modal is confirmed', () => {

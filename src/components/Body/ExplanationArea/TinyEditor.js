@@ -10,24 +10,19 @@ import { weakRandomString, useTinyMceEditor } from '../../../utils';
  */
 export function TinyEditor({ id, value, onChange, config }) {
   const [input, setInput] = useState(value);
-  const bindAndCall = (e) => {
-    setInput(e.target.value);
-    onChange(e);
+  const bindAndCall = (val) => {
+    setInput(val);
+    onChange(val);
   };
 
   useTinyMceEditor(id, bindAndCall, config);
 
   return (
     /**
-     * Technically, `value` and `onChange` props are
-     * unnecessary here. However, having `value` is
-     * very useful in testing, and we can't have it
-     * without `onChange`, else eslint (or something)
-     * will complain. Change handler would be called
-     * only once anyway, so there is no harm in
-     * including it.
+     * `value` and `onChange` props are here only for testing. They do not
+     * affect how tinymce editor works.
      */
-    <textarea id={id} value={input} onChange={bindAndCall} />
+    <textarea id={id} value={input} onChange={(e) => bindAndCall(e.target.value)} />
   );
 }
 

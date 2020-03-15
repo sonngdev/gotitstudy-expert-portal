@@ -15,13 +15,13 @@ export function ExplanationArea() {
 
       <div className="explanation-editors u-paddingRightSmall">
         <h5>Theory or Concept</h5>
-        <TinyEditor id="concept-editor" value={conInput} onChange={(e) => setConInput(e.target.value)} />
+        <TinyEditor id="concept-editor" value={conInput} onChange={setConInput} />
 
         <h5 className="u-marginTopLarge">Step By Step Instructions</h5>
-        <TinyEditor id="instructions-editor" value={insInput} onChange={(e) => setInsInput(e.target.value)} />
+        <TinyEditor id="instructions-editor" value={insInput} onChange={setInsInput} />
 
         <h5 className="u-marginTopLarge">Final Answer</h5>
-        <TinyEditor id="answer-editor" value={ansInput} onChange={(e) => setAnsInput(e.target.value)} />
+        <TinyEditor id="answer-editor" value={ansInput} onChange={setAnsInput} />
       </div>
 
       <ExplanationFooter explanations={[conInput, insInput, ansInput]} />
